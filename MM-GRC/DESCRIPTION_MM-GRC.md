@@ -101,7 +101,7 @@ Run the `Tree_based_classification.R` script to identify P-P candidates on phage
 
     3.  `plasmid_proteins.fasta` – protein sequences of the target plasmids
 
-    4.  `models/` – folder containing pre-trained random forest models
+    4.  `models/` – folder containing pre-trained random forest models. It can be downloaded from [https://zenodo.org/uploads/add_valid_link].
 
 -   Output files:
 
