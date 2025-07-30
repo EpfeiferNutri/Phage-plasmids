@@ -18,7 +18,7 @@ The pipeline works with both **complete** and **draft genomes**, using two dedic
 
 **Figure guide**
 
-![](https://github.com/EpfeiferNutri/Phage-plasmids/tree/main/tyPPing/figures_documentation/pipeline.png)
+![](figures_documentation/pipeline.png)
 
 **Step 1. Protein search**
 
@@ -187,7 +187,7 @@ tyPPing generates **two main output tables**:
 
 This table contains the **final predictions** for elements detected by at least one branch (**MinProteins** and/or **Composition**) and includes confidence levels for each assignment.
 
-![](https://github.com/EpfeiferNutri/Phage-plasmids/tree/main/tyPPing/figures_documentation/prediction.png)
+![](figures_documentation/prediction.png)
 
 **Column descriptions:**
 
@@ -206,7 +206,7 @@ This table contains the **final predictions** for elements detected by at least 
 
 This table lists **all HMM hits** (not just confident predictions). Useful for inspection of intermediate data or investigate borderline cases.
 
-![](https://github.com/EpfeiferNutri/Phage-plasmids/tree/main/tyPPing/figures_documentation/all_hits.png)
+![](figures_documentation/all_hits.png)
 
 -   **Genome ID** – unique identifier of the analyzed genome.
 -   **P-P type** – phage-plasmid (P-P) type for which the hits are analyzed (can be several per genome).
