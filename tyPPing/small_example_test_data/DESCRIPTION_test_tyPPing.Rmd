@@ -8,13 +8,13 @@ Write protein_to_genome.tsv file for protein_seqs (example_dataset_prt.fasta) of
 library(seqinr)
 library(tidyverse)
 
-protein_seqs = read.fasta("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/example_dataset_prt.fasta"
+protein_seqs = read.fasta("tyPPing/small_example_test_data/example_dataset_prt.fasta"
                           , as.string = TRUE, forceDNAtolower = FALSE)
 
 protein_data = data.frame(protein_id= unlist(lapply(protein_seqs, getName))) %>%
   mutate(genome_id = str_remove(str_extract(protein_id, "(?<=\\|)(NZ|NC)_[^\\.]+\\.[0-9]+"), "\\.[0-9]+"))
 
-# write_tsv(protein_data, "~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/protein_to_genome.tsv")
+# write_tsv(protein_data, "tyPPing/small_example_test_data/protein_to_genome.tsv")
 
 ```
 
@@ -36,24 +36,24 @@ genome_size_df = data.frame(
   )
 )
 
-# write_tsv(genome_size_df, "~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/genome_size.tsv")
+# write_tsv(genome_size_df, "tyPPing/small_example_test_data/genome_size.tsv")
 ```
 
 Obtain data from `hmmsearch` (HMMER) for example_dataset_prt.fasta against tyPPing_signarture_profiles.hmm --\> input for tyPPing
 
 ```{r}
-HMM_search_output_path = "~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/tyPPing_example_hmmsearch_output.tbl.out"
+HMM_search_output_path = "tyPPing/small_example_test_data/tyPPing_example_hmmsearch_output.tbl.out"
 HMM_search_output = read_domtblout(HMM_search_output_path)
 ```
 
 Necessary input data provided with tyPPing in `tyPPing_input_data/` folder:
 
 ```{r}
-Cutoffs_information = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv")
+Cutoffs_information = fread("tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv")
 
-Compositions_information = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/tyPPing_input_data/Compositions_information_table.tsv")
+Compositions_information = fread("tyPPing/tyPPing_input_data/Compositions_information_table.tsv")
 
-Profile_information = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/tyPPing_input_data/Profile_information_table.tsv")
+Profile_information = fread("tyPPing/tyPPing_input_data/Profile_information_table.tsv")
 ```
 
 **Run tyPPing (input data above and data provided with the script)**
@@ -63,13 +63,13 @@ Profile_information = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detect
 ```{r}
 # ---------- Example run. Provide path to input files from 'small_example_test_data/' to run tyPPing.R in interactive mode ---------- #
       
-protein_to_genome_path = "~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/protein_to_genome.tsv"
-genome_size_path = "~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/genome_size.tsv"
-HMM_search_output_path = '~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/tyPPing_example_hmmsearch_output.tbl.out'
-output_dir_path = '~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data'
-Compositions_unique_path = '~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/tyPPing_input_data/Compositions_information_table.tsv'
-Profile_info_path = '~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/tyPPing_input_data/Profile_information_table.tsv'
-ALL_cutoffs_path = '~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv'
+protein_to_genome_path = "tyPPing/small_example_test_data/protein_to_genome.tsv"
+genome_size_path = "tyPPing/small_example_test_data/genome_size.tsv"
+HMM_search_output_path = 'tyPPing/small_example_test_data/tyPPing_example_hmmsearch_output.tbl.out'
+output_dir_path = 'tyPPing/small_example_test_data'
+Compositions_unique_path = 'tyPPing/tyPPing_input_data/Compositions_information_table.tsv'
+Profile_info_path = 'tyPPing/tyPPing_input_data/Profile_information_table.tsv'
+ALL_cutoffs_path = 'tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv'
 ```
 
 **Command line**
@@ -88,16 +88,16 @@ Rscript tyPPing.R\
 tyPPing output data:
 
 ```{r}
-All_hmm_hits_table = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/All_hmm_hits_table.tsv")
+All_hmm_hits_table = fread("tyPPing/small_example_test_data/All_hmm_hits_table.tsv")
 
-Final_prediction_table = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/Final_prediction_table.tsv")
+Final_prediction_table = fread("tyPPing/small_example_test_data/Final_prediction_table.tsv")
 
 Putative_PPs = Final_prediction_table %>% filter(`Confidence level` != "Low") 
 ```
 
 ```{r}
-test_the_results = fread("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/tyPPing/small_example_test_data/Final_prediction_table.tsv") %>% 
-  left_join(read_excel("~/work/PP_profiles_2024/GitHub_structure/P-P_detection/Study_associated_data/Supplementary_data/S1_All_MGE_information_table.xlsx") %>%
+test_the_results = fread("tyPPing/small_example_test_data/Final_prediction_table.tsv") %>% 
+  left_join(read_excel("Study_associated_data/Supplementary_data/S1_All_MGE_information_table.xlsx") %>%
               select(`NCBI accession`, `Replicon size (bp)`, `P-P type tyPPing`, `Confidence level (tyPPing)`), by=c("Genome ID"="NCBI accession"))
 
 ```
