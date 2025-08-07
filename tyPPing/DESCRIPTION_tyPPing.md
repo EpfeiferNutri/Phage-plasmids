@@ -15,7 +15,7 @@ The pipeline works with both **complete** and **draft genomes**, using two dedic
 
 **Figure guide**
 
-![](figures_documentation/pipeline.png)
+<img width="1241" height="437" alt="pipeline" src="https://github.com/user-attachments/assets/557b1031-792a-4985-970d-6a1badb19e07" />
 
 **Step 1. Protein search**
 
@@ -182,7 +182,7 @@ tyPPing generates **two output tables**:
 
 This table contains the **final predictions** for elements detected by at least one branch (**MinProteins** and/or **Composition**) and includes confidence levels for each assignment.
 
-![](figures_documentation/prediction.png)
+<img width="1146" height="173" alt="prediction" src="https://github.com/user-attachments/assets/d38527cf-3786-4dac-adfc-30d7e657388e" />
 
 **Column descriptions:**
 
@@ -201,7 +201,7 @@ This table contains the **final predictions** for elements detected by at least 
 
 This table lists **all HMM hits** (not just confident predictions). It is useful for inspection of intermediate data or investigating borderline cases.
 
-![](figures_documentation/all_hits.png)
+<img width="1160" height="125" alt="all_hits" src="https://github.com/user-attachments/assets/c26bc977-cc86-4ada-b94e-b58e73815397" />
 
 -   **Genome ID** – unique identifier of the analyzed genome.
 -   **P-P type** – phage-plasmid (P-P) type for which the hits are analyzed (can be several entries per genome).
