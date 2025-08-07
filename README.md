@@ -1,4 +1,4 @@
-# **tyPPing** and others as an fficient toolkit for phage-plasmid identification
+# **tyPPing** and others as an efficient toolkit for phage-plasmid identification
 
 **Associated publication: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
 
