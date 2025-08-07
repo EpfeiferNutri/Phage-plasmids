@@ -1,8 +1,10 @@
-# Efficient detection and typing of phage-plasmids [REF]
+# **tyPPing** and others as an fficient toolkit for phage-plasmid identification
 
-This GitHub repository provides the documentation, scripts, and data necessary for the **detection of phage-plasmids (P-Ps)**. The repository is organized into several folders, each corresponding to a specific analytical approach. It also includes the data and script required to reproduce the figures and analyses presented in the associated study [REF].
+**Associated publication: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
 
-For detailed information on each section, please go to the corresponding folder, which includes a **`DESCRIPTION_X.Rmd`** file describing its contents and usage.
+This GitHub repository provides the documentation, scripts, and data necessary for the **identification of phage-plasmids (P-Ps)**. It is organized into several folders, each corresponding to a specific analytical approach. The repository also includes the data and script required to reproduce the figures and analyses presented in the study.
+
+For detailed information on each section, please go to the corresponding folder, which includes a **`DESCRIPTION_XXX.md`** file describing its contents and usage.
 
 ## Repository structure:
 
@@ -10,107 +12,53 @@ For detailed information on each section, please go to the corresponding folder,
 
 tyPPing is a user-friendly pipeline designed for the sensitive and efficient detection of prevalent phage-plasmid (P-P) types. It uses distinct protein profiles that were specifically generated and trained on well-characterized P-P. It classify P-Ps into defined types, along with confidence-level assessments, fast and accuratly.
 
-Folder structure:
-
--   `DESCRIPTION_tyPPing.Rmd` describes how to use tyPPing for P-P detection.
-
--   `tyPPing.R` – main script for analyzing complete genome sequences.
-
--   `tyPPing_for_draft_genomes.R` – adapted script for analyzing draft genomes represented as sets of contigs.
-
--   `tyPPing_input_data/` contains required input data to run tyPPing:
-
-    Supporting information tables used by tyPPing to detect and type P-Ps.
-
--   `small_example_test_data/` includes example input and output files for 20 test genomes processed by `tyPPing.R`.
+`DESCRIPTION_tyPPing.md` describes how to use tyPPing for P-P detection.
 
 ### *MM-GRC*
 
-MM-GRC ([m]{.underline}ulti-[m]{.underline}odel [g]{.underline}ene [r]{.underline}epertoire [c]{.underline}lustering) is an integrated approach developed to detect and classify P-Ps [REF]. This method combines functional annotation using phage- and plasmid-specific HMM profiles with machine learning (Random Forest, RF) models for P-P detection. It further employs gene repertoire relatedness to cluster and type P-Ps. It can detect all P-P types including diverse communities and novel elements.
+MM-GRC (**m**ulti-**m**odel **g**ene **r**epertoire **c**lustering) is an integrated approach developed to detect and classify P-Ps. This method combines functional annotation using phage- and plasmid-specific HMM profiles with machine learning (Random Forest, RF) models for P-P detection. It further employs gene repertoire relatedness to cluster and type P-Ps. It can detect all P-P types including diverse communities and novel elements.
 
-Folder structure:
+`DESCRIPTION_MM-GRC.md` describes how to detect and type P-Ps using MM-GRC.
 
--   `DESCRIPTION_MM-GRC.Rmd` describes how to use MM-GRC for P-P detection.
+### *geNomad_vConTACT2*
 
--   Plasmid-specific HMMs (`par_plasmid_annotation.hmm` and `rep_plasmid_annotation.hmm`)
+This approach combines the use of geNomad and vConTACT v2 for the identification and typing of P-Ps.
 
--   Phage-specific HMM functional annotation reference table (`200122_func_cat_pvogs_pfams_tigfams_v4.xlsx`)
+geNomad is a computational tool for classifying nucleotide sequences as phages, integrated prophages, or plasmids [REF]. In this study, it is used to analyze plasmid sequences and identify candidates with phage-like characteristics, indicating potential P-Ps.
 
--   `Tree_based_classification.R` - custom R script to compute genome annotation profiles and apply the classification models to predict phage scores ranging from 0 (plasmid-like) to 1 (phage-like) for target genomes.
+vConTACT v2 is a viral classification tool that clusters viral genomes based on shared gene content [REF]. Here, it is used to further group the P-P candidates identified by geNomad. Plasmid genomes predicted to be phage-like are compared with a reference set of known P-Ps to determine their type based on similarity.
 
--   `wGRR_MGEs.R` - custom R script used to calculate *weighted gene repertoire relatedness (wGRR)* between genomes, used for clustering and typing P-Ps.
+`DESCRIPTION_geNomad_vConTACT2.md` provides instructions for using geNomad and vConTACT v2 to detect P-Ps.
 
--   P-P prediction data:
+### *Publication_related_data*
 
-    `0523_plasmids_for_MM_GRC.xlsx` - input list of plasmids analyzed.
+This folder contains the scripts, data, and supplementary materials needed to reproduce the figures and analyses presented in the publication [REF].
 
-    `model_prediction_stats_for_0523_plasmids.tsv` - output of P-P classification from the RF models.
+`DESCRIPTION_publication_data.md` provides more detailed information.
 
-### *geNomad_for_P-Ps*
+## Files stored in Zenodo repository
 
-geNomad is a computational tool designed to classify nucleotide sequences as phages, integrated prophages, or plasmids [REF]. In this study, geNomad is applied to a set of plasmid sequences to identify potential P-Ps. This section describes the usage and interpretation of geNomad’s results in the context of P-P detection.
-
-Folder structure:
-
--   `DESCRIPTION_geNomad.Rmd` describes how to use geNomad for P-P detection.
-
--   `0523_plasmids_for_geNomad.xlsx` - list of plasmid sequences used as input for geNomad analysis.
-
--   P-P detection results - geNomad output summary tables:
-
-    `geNomad_plasmid_summary_on_0523_plasmids.tsv` - elements predicted to be plasmids
-
-    `geNomad_virus_summary_on_0523_plasmids.tsv` - elements predicted to be phages or prophages
-
-### *vConTACT2_for_P-Ps*
-
-vConTACT v2 [REF] is a viral classification tool that organizes viral genomes into clusters based on gene-sharing networks. In this project, we apply vConTACT v2 to classify P-Ps by integrating query plasmid genomes (predicted to be phages by geNomad) with a curated reference dataset of known P-Ps [REF]. This part describes the usage and interpretation of vConTACT’s results in the context of P-P clustering.
-
-Folder structure:
-
--   `DESCRIPTION_vConTACT2.Rmd` describes how to use vConTACT v2 for P-P detection.
-
--   `0523_plasmids_ref_PPs_for_vConTACT.csv` - list of genomes used as input for vConTACT v2, including target elements and reference P-Ps.
-
--   Clustering results (raw output from vConTACT v2):
-
-    `genome_by_genome_overview.csv` - summary of pairwise genome associations.
-
-    `c1.ntw` - network file representing gene-sharing relationships.
-
--   `reference_0321_PP_list_for_vConTACT2.xlsx` - reference P-P dataset from [REF] with assigned P-P types
-
--   `vConTACT2_PP_list_in_0523_plasmids.xlsx` - final output: P-Ps identified within the plasmid dataset, assigned with predicted P-P types based on clustering with the reference set.
-
-### *Study_associated_data*
-
-This folder contains the scripts, data, and supplementary materials needed to reproduce the figures and analyses presented in the associated publication [REF].
-
-Folder structure:
-
--   `R_scripts_to_generate_figures/`
-
--   `Supplementary_data/` - contains all required tables
-
--   Documents with supplemental figures
-
-## Big files are placed in a zenodo repository:
-
-**[Link to the repository]**
+Due to storage limits, several essential files are available for download from a Zenodo repository: **[Link to the repository]**
 
 -   `tyPPing_signature_profiles.hmm` – HMM profiles specific to P-P types, used for protein-to-profile searches by tyPPing.
 
--   `phage.hmm` - phage-specific HMM profiles used by MM-GRC
+-   `phage.hmm` – phage-specific HMM profiles used in MM-GRC pipeline.
 
--   `models/` - folder contains random forest (RF) classification models trained to detect P-Ps in plasmid datasets used by MM-GRC
+-   `models/` – a folder containing RF classification models trained to detect P-Ps in plasmid datasets (used by MM-GRC).
 
--   `g2g_plot_tables/` - necessary data for script `all_g_to_g_plots_filtered.R` from *Study_associated_data* folder
+-   `g2g_plot_tables/` and `tyPPing_criteria_tables/` contain the input tables required to run the scripts `all_g_to_g_plots_filtered.R` and `figures_methods.R` from `Publication_related_data/` folder.
 
--   `tyPPing_criteria_tables/` - necessary data for script `figures_methods.R` from *Study_associated_data* folder
+-   `draft_genomes_analysis/` – a folder containing 12 selected draft genomes from carbapenem-resistant *Enterobacteriales* (CRE) species (including short-read assemblies, long-read assemblies, and complete P-P genomes in corresponding subfolders) and prediction tables generated by `tyPPing_for_draft_genomes.R.`
 
 ## References
 
--   [tyPPing]
--   [geNomad documentation](https://portal.nersc.gov/genomad/index.html)
--   [vConTACTv2 documentation](https://bitbucket.org/MAVERICLab/vcontact2/src/master/)
--   [mm-grc]
+-   [MM-GRC](https://pmc.ncbi.nlm.nih.gov/articles/PMC7969092/)
+-   [HMMER](https://github.com/EddyRivasLab/hmmer)
+-   [MMseqs2](https://github.com/soedinglab/MMseqs2)
+-   [geNomad](https://portal.nersc.gov/genomad/index.html)
+-   [vConTACTv2](https://bitbucket.org/MAVERICLab/vcontact2/src/master/)
+-   [PHROGs](https://phrogs.lmge.uca.fr/)
+
+## Citing tyPPing
+
+If you use tyPPing, please cite the corresponding paper:
