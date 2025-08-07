@@ -1,0 +1,103 @@
+### Example setup for tyPPing (input/output data)
+
+**Preparing input files for tyPPing**
+
+Write protein_to_genome.tsv file for protein_seqs (example_dataset_prt.fasta) of sequences form example_dataset_list.txt --\> input for tyPPing
+
+```{r}
+library(seqinr)
+library(tidyverse)
+
+protein_seqs = read.fasta("tyPPing/test_example/example_dataset_prt.fasta"
+                          , as.string = TRUE, forceDNAtolower = FALSE)
+
+protein_data = data.frame(protein_id= unlist(lapply(protein_seqs, getName))) %>%
+  mutate(genome_id = str_remove(str_extract(protein_id, "(?<=\\|)(NZ|NC)_[^\\.]+\\.[0-9]+"), "\\.[0-9]+"))
+
+# write_tsv(protein_data, "tyPPing/test_example/protein_to_genome.tsv")
+
+```
+
+Write genome_size.tsv file for protein_seqs (example_dataset_prt.fasta) of sequences form example_dataset_list.txt --\> input for tyPPing
+
+```{r}
+genome_size_df = data.frame(
+  genome_id = c(
+    "NC_002128", "NC_005856", "NC_006509", "NC_015465", "NC_017969",
+    "NZ_CP010248", "NC_028978", "NZ_CP019758", "NZ_CP019926", "NZ_CP027149",
+    "NZ_CP028550", "NZ_CP031294", "NZ_CP045146", "NZ_CP032492", "NZ_CP064249",
+    "NZ_CP017778", "NZ_CP077310", "NZ_CP103719", "NZ_CP107600", "NZ_CP115597"
+  ),
+  size = c(
+    92721, 94800, 47890, 33004, 108853,
+    136889, 60609, 30222, 52971, 33772,
+    110186, 110686, 100979, 90686, 56365,
+    225961, 111400, 250715, 110194, 29962
+  )
+)
+
+# write_tsv(genome_size_df, "tyPPing/test_example/genome_size.tsv")
+```
+
+Obtain data from `hmmsearch` (HMMER) for example_dataset_prt.fasta against tyPPing_signarture_profiles.hmm --\> input for tyPPing
+
+```{r}
+HMM_search_output_path = "tyPPing/test_example/tyPPing_example_hmmsearch_output.tbl.out"
+HMM_search_output = read_domtblout(HMM_search_output_path)
+```
+
+Necessary input data provided with tyPPing in `tyPPing_input_data/` folder:
+
+```{r}
+Cutoffs_information = fread("tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv")
+
+Compositions_information = fread("tyPPing/tyPPing_input_data/Compositions_information_table.tsv")
+
+Profile_information = fread("tyPPing/tyPPing_input_data/Profile_information_table.tsv")
+```
+
+**Run tyPPing (input data above and data provided with the script)**
+
+**Interactive mode**
+
+```{r}
+# ---------- Example run. Provide path to input files from 'test_example/' to run tyPPing.R in interactive mode ---------- #
+      
+protein_to_genome_path = "tyPPing/test_example/protein_to_genome.tsv"
+genome_size_path = "tyPPing/test_example/genome_size.tsv"
+HMM_search_output_path = 'tyPPing/test_example/tyPPing_example_hmmsearch_output.tbl.out'
+output_dir_path = 'tyPPing/test_example'
+Compositions_unique_path = 'tyPPing/tyPPing_input_data/Compositions_information_table.tsv'
+Profile_info_path = 'tyPPing/tyPPing_input_data/Profile_information_table.tsv'
+ALL_cutoffs_path = 'tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv'
+```
+
+**Command line**
+
+```{bash}
+Rscript tyPPing.R\  
+--map path/to/protein_to_genome.tsv \
+--sizes path/to/genome_size.tsv \
+--hmm_domtbl path/to/all_pers_hmm_plasmids_0523_out.tbl.out \
+--outdir path/to/output_dir/ \
+--compositions path/to/Compositions_information_table.tsv \
+--profiles path/to/Profile_information_table.tsv \
+--cutoffs path/to/Cutoffs_information_table.tsv
+```
+
+tyPPing output data:
+
+```{r}
+All_hmm_hits_table = fread("tyPPing/test_example/All_hmm_hits_table.tsv")
+
+Final_prediction_table = fread("tyPPing/test_example/Final_prediction_table.tsv")
+
+Putative_PPs = Final_prediction_table %>% filter(`Confidence level` != "Low") 
+```
+
+```{r}
+test_the_results = fread("tyPPing/test_example/Final_prediction_table.tsv") %>% 
+  left_join(read_excel("Publication_related_data/Supplementary_data/S1_All_MGE_information_table.xlsx") %>%
+              select(`NCBI accession`, `Replicon size (bp)`, `P-P type tyPPing`, `Confidence level (tyPPing)`), by=c("Genome ID"="NCBI accession"))
+
+```
