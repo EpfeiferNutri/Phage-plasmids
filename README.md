@@ -5,8 +5,6 @@
 Here you can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)** (folders named after each approach). 
 Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
-For detailed information see **`DESCRIPTION_XXX.md`**
-
 ## Repository structure:
 
 ### *tyPPing*
