@@ -43,11 +43,11 @@ For installation instructions and detailed user guides, see [geNomad documentati
 -   A protein sequences FASTA file 
 -   A "protein-to-genome" mapping file (`.tsv` or `.csv` format).
 -   **For P-P detection**: include a reference P-P dataset in the protein and protein-to-genome tables.
-  Use --db flag "None" in vcontact2 
+  Use --db flag "None"
 
 ### **Running**
 
-**General commands** to execute geNomad and vConTACT v2:
+**Commands** to execute geNomad and vConTACT v2:
 
 ```{bash, eval = FALSE}
 
@@ -63,8 +63,6 @@ vcontact2 --raw-proteins [proteins file] --proteins-fp [gene-to-genome mapping f
 -   vConTACT v2 accuracy depends on the quality of the used reference dataset. To improve performance, combine vConTACT v2 with additional tools like MM-GRC and tyPPing.
 
 # Results summary on 05/23 dataset
-
-**Folder structure:**
 
 ```{bash eval=FALSE, include=FALSE}
 
@@ -85,8 +83,6 @@ geNomad_vConTACTv2/
 
 **Step 1: running geNomad**
 
-We screened the large plasmid dataset to detect putative P-Ps with strong phage signatures.
-
 -   As input dataset we processed 38,051 plasmid sequences from non-redundant NCBI RefSeq, collected in May 2023 (referred to as "05/23").
 
 -   geNomad (end-to-end) was executed in default mode with the plasmid sequences listed in `0523_plasmids_for_geNomad.xlsx`. It used the geNomad database v1.5 and was executed on 25 CPUs on the Migale computational cluster [https://migale.inrae.fr/], with a total runtime of 6 hours and 17 minutes.
@@ -105,15 +101,15 @@ We screened the large plasmid dataset to detect putative P-Ps with strong phage 
 
 **Step 2: running vConTACT v2**
 
-In the next step, we used vConTACT v2 to cluster putative P-Ps and assign types based on gene-sharing with a reference dataset (1416 P-P from PMID: 38378896).
+We used vConTACT v2 to cluster putative P-Ps and assign types with a reference dataset (1416 P-P from PMID: 38378896).
 
--   As input dataset we processed 2,267 sequences (`from 0523_plasmids_ref_PPs_for_vConTACT.csv`), including all putative P-Ps classified as phages by geNomad and the reference P-P dataset.
+-   As input dataset we processed 1,714 putative P-Ps (`from 0523_plasmids_ref_PPs_for_vConTACT.csv`).
 
--   Run details: vConTACT v2 ran with default settings on 25 CPUs on the Migale computational cluster with a total runtime of 13 minutes.
+-  vConTACT v2 required 13 minutes (default settings, 25 CPUs on the Migale cluster)
 
--   The raw output files from vConTACT v2 include clustering information for each genome (`genome_by_genome_overview.csv`) and gene-sharing network results (`c1.ntw`).
+-   Output files from vConTACT v2 include clustering information for each genome (`genome_by_genome_overview.csv`) and gene-sharing network results (`c1.ntw`).
 
--   Reference 03/21 P-P list which was used for vConTACT v2 type assignment is available in `reference_0321_PP_list_for_vConTACT2.xlsx`.
+-   Reference P-P list  with 1416 typed P-Ps `reference_0321_PP_list_for_vConTACT2.xlsx`.
 
 -   R code used for assigning types to putative P-Ps based on clustering with reference P-Ps:
 
@@ -157,4 +153,4 @@ putative_new_PPs = PPs_only_genomad_Summary_0523_vcontact_processed %>%
   select(Genome, `P-P type vConTACT2`)
 ```
 
--   The final list of predicted P-Ps from the 05/23 dataset (based on combined geNomad and vConTACT2 results) is available in `vConTACT2_PP_list_in_0523_plasmids.xlsx`.
+-   `vConTACT2_PP_list_in_0523_plasmids.xlsx`: Predicted and typed P-Ps of the 05/23 dataset (detected and typed with geNomad and vConTACT2).
