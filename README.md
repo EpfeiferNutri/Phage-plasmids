@@ -1,22 +1,24 @@
-# **tyPPing** and others as an efficient toolkit for phage-plasmid identification
+# **tyPPing** and other methods for detecting phage-plasmids
 
-**Associated publication: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
+**For further information, see: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
 
-This GitHub repository provides the documentation, scripts, and data necessary for the **identification of phage-plasmids (P-Ps)**. It is organized into several folders, each corresponding to a specific analytical approach. The repository also includes the data and script required to reproduce the figures and analyses presented in the study.
+Here yyou can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)** (folders named after each approach). 
+Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
-For detailed information on each section, please go to the corresponding folder, which includes a **`DESCRIPTION_XXX.md`** file describing its contents and usage.
+For detailed information see **`DESCRIPTION_XXX.md`**
 
 ## Repository structure:
 
 ### *tyPPing*
 
-tyPPing is a user-friendly pipeline designed for the sensitive and efficient detection of prevalent phage-plasmid (P-P) types. It uses distinct protein profiles that were specifically generated and trained on well-characterized P-P. It classify P-Ps into defined types, along with confidence-level assessments, fast and accuratly.
+tyPPing is a user-friendly, fast and accurate method, designed for the sensitive and efficient detection of distinct P-P types. Currently it finds P-Ps of the type AB_1, P1_1, P1_2, N15, SSU5, pMT1, pCAV, pSLy3, pKpn, and cp32.
+It uses protein profiles to search sequences for patterns (frequency and compositional sets) of conserved P-P proteins. If a match also fits the typical size range, it is predicted as a P-P with a distinct confidence.
 
 `DESCRIPTION_tyPPing.md` describes how to use tyPPing for P-P detection.
 
 ### *MM-GRC*
 
-MM-GRC (**m**ulti-**m**odel **g**ene **r**epertoire **c**lustering) is an integrated approach developed to detect and classify P-Ps. This method combines functional annotation using phage- and plasmid-specific HMM profiles with machine learning (Random Forest, RF) models for P-P detection. It further employs gene repertoire relatedness to cluster and type P-Ps. It can detect all P-P types including diverse communities and novel elements.
+MM-GRC (**m**ulti-**m**odel **g**ene **r**epertoire **c**lustering) is our first method to classify P-Ps, that we developed in PMID: 33590101. It is an integrated approach combining functional annotation (with phage- and plasmid-specific HMM profiles), machine learning (Random Forest, RF) models, and which was complemented with a literature review. It relies on the gene repertoire relatedness to type P-Ps. It detects various P-P types including diverse communities and unrelated putative P-Ps (singletons).
 
 `DESCRIPTION_MM-GRC.md` describes how to detect and type P-Ps using MM-GRC.
 
