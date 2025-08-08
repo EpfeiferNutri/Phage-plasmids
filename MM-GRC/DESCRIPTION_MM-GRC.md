@@ -69,7 +69,7 @@ To run MM-GRC successfully, ensure the following components are installed and ac
 
 #### 1. Search for phage proteins in plasmid genomes
 
-Use `hmmsearch` (from HMMER) to scan target plasmid protein sequences (e.g. `plasmid_proteins.fasta`) against HMM profiles in `phage.hmm`. to detect phage-specific features. For detailed HMMER documentation see [REF].
+Use `hmmsearch` (from HMMER) to scan target plasmid protein sequences (e.g. `plasmid_proteins.fasta`) against HMM profiles in `phage.hmm`. to detect phage-specific features. 
 
 #### 2. Detect putative P-P using the RF classifiers
 
@@ -92,7 +92,7 @@ Run the `Tree_based_classification.R` script to identify P-P candidates on phage
 
 #### 3. Run MMseqs2 to compare protein sequences
 
-To assess protein-level similarity, first combine the predicted P-P protein sequences (`PP_protein_seqs.fasta`) with protein sequences from the reference P-P dataset. This combined file (e.g., `PP_protein_seqs_extended.fasta`) will be used as input for MMseqs2 `search` to perform all-vs-all protein sequence comparison and detect homologous proteins across putative and known P-Ps. For detailed MMseqs2 documentation see [REF]. Output file from `convertalis` (e.g., `pp_protein_seqs.m8`) is processed in the next step.
+To assess protein-level similarity, first combine the predicted P-P protein sequences (`PP_protein_seqs.fasta`) with protein sequences from the reference P-P dataset. This combined file (e.g., `PP_protein_seqs_extended.fasta`) will be used as input for MMseqs2 `search` to perform all-vs-all protein sequence comparison and detect homologous proteins across putative and known P-Ps. Output file from `convertalis` (e.g., `pp_protein_seqs.m8`) is processed in the next step.
 
 #### 4. Compute wGRR values
 
