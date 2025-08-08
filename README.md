@@ -20,14 +20,14 @@ MM-GRC (**m**ulti-**m**odel **g**ene **r**epertoire **c**lustering) is our first
 
 This approach combines the use of geNomad and vConTACT v2 for the identification and typing of P-Ps.
 
-geNomad is a computational tool for classifying nucleotide sequences as phages, integrated prophages, or plasmids [REF]. In this study, it is used to analyze plasmid sequences and identify candidates with phage-like characteristics, indicating potential P-Ps.
+geNomad is a computational tool for classifying nucleotide sequences as phages, integrated prophages, or plasmids. In this study, it is used to analyze plasmid sequences and identify candidates with phage-like characteristics, indicating potential P-Ps.
 
-vConTACT v2 is a viral classification tool that clusters viral genomes based on shared gene content [REF]. Here, it is used to further group the P-P candidates identified by geNomad. Plasmid genomes predicted to be phage-like are compared with a reference set of known P-Ps to determine their type based on similarity.
+vConTACT v2 is a viral classification tool that clusters viral genomes based on shared gene content. Here, it is used to further group the P-P candidates identified by geNomad. Plasmid genomes predicted to be phage-like are compared with a reference set of known P-Ps to determine their type based on similarity.
 
 
 ### *Publication_related_data*
 
-This folder contains the scripts, data, and supplementary materials needed to reproduce the figures and analyses presented in the publication [REF].
+This folder contains the scripts, data, and supplementary materials needed to reproduce the figures and analyses presented in the publication.
 
 
 ## Files stored in Zenodo repository
