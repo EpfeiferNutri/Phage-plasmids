@@ -34,7 +34,7 @@ Scripts, data, and supplementary materials to reproduce the figures and analyses
 
 Further essential files are available at the Zenodo repository: **[Link to the repository]**
 
--   `tyPPing_signature_profiles.hmm` – 756 HMM profiles (concatenated) specific to the 10 P-P types. Used for protein-to-profile comparison (needed for tyPPing).
+-   `tyPPing_signature_profiles.hmm` – 763 HMM profiles (concatenated) specific to the 10 P-P types. Used for protein-to-profile comparison (needed for tyPPing).
 
 -   `phage.hmm` – phage-specific HMM profiles (required for MM-GRC).
 
