@@ -1,11 +1,10 @@
 # libraries
 library(tidyverse)
-library(gggenomes)
 library(readxl)
 
 ###
-# Detection of P-P groups and communities by different tools
-s1_all_mge = read_excel("../Table_S1_All_MGEs.xlsx")
+# Path to table S1, with all MGEs and P-P predictions
+s1_all_mge = read_excel("Table_S1_All_MGEs.xlsx")
 
 plasmids_0523_genomad = s1_all_mge %>% filter(`MGE type geNomad 0523` == "Plasmid")
 phage_0523_genomad = s1_all_mge %>% filter(`MGE type geNomad 0523` == "Phage")
@@ -14,8 +13,6 @@ s1_all_mge_signature = s1_all_mge %>% filter(!is.na(`Signature to all genes rati
   dplyr::count(`in 0321`, `in 0523`, `MGE type (by Model)`)
 
 s1_all_mge_low_0321 = s1_all_mge %>% filter(`Confidence level (tyPPing)` == "Low", `in 0321` == "Yes")
-
-#pps = read_tsv("pps_D_0321.tsv")
 
 total_pps = s1_all_mge %>% 
   # take only the detectd ones
@@ -108,7 +105,7 @@ upset_plot_df = pre_upset_plot %>%
   
 ### 
   
-  ### how many are classed by genomad as plasmids and prophages
+  ### Number of P-Ps classed by geNomad as plasmids and intrgrated prophages
   
   # filter for tbl
   tyPPing_geno = pre_upset_plot %>% filter(`in 05/23` == "Yes", `in 03/21` == "No", tyPPing_confidence %in% c("High","Medium") ) %>% dplyr::count(genomad_MGE,Source) %>% mutate(Method = "tyPPing")
@@ -125,5 +122,6 @@ upset_plot_df = pre_upset_plot %>%
   geom_col() +
   scale_fill_manual(values = c("tomato","lightblue","grey")) +
   theme_bw()+theme(text = element_text(size = 14), legend.position = "top", legend.title = element_blank())
+
 
 
