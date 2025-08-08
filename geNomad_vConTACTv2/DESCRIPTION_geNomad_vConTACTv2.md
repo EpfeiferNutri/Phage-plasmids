@@ -48,7 +48,7 @@ For installation instructions and detailed user guides, see [geNomad documentati
 
 ### **Running**
 
-**General commands** to execute geNomad [REF] and vConTACT v2 [REF]:
+**General commands** to execute geNomad and vConTACT v2:
 
 ```{bash, eval = FALSE}
 
