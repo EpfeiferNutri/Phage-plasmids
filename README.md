@@ -2,10 +2,9 @@
 
 **For more information, see: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
 
-Here you can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)**. The folders are named after each approach, and see DESCRIPTION.md for details. 
-Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
+Here you can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)**. 
 
-## Repository structure:
+See DESCRIPTION.md in the separate folders for details. Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
 ### *tyPPing*
 
@@ -24,15 +23,11 @@ geNomad classifies nucleotide sequences as phages, integrated prophages, or plas
 
 vConTACT v2 is clusters viral genomes with a reference dataset using their shared gene content. Here, we used it to group the putative P-Ps identified by geNomad with 1416 P-Ps that we typed in previous work.
 
-
 ### *Publication_related_data*
 
 Scripts, data, and supplementary materials to reproduce the figures and analyses presented in the publication.
 
-
-## Files stored in Zenodo repository
-
-Further essential files are available at the Zenodo repository: **[Link to the repository]**
+Further files are available at the Zenodo repository: **[Link to the repository]**
 
 -   `tyPPing_signature_profiles.hmm` – 763 HMM profiles (concatenated) specific to the 10 P-P types. Used for protein-to-profile comparison (needed for tyPPing).
 
@@ -54,9 +49,9 @@ Further essential files are available at the Zenodo repository: **[Link to the r
 -   [PHROGs](https://phrogs.lmge.uca.fr/)
 
 ## Citing tyPPing
-If you like tyPPing and use it in your work, please cite: 
-[ADD LINK]
+If you like tyPPing and you use it for your work, please cite: 
 'Efficient detection and typing of phage-plasmids.' by
-Karina Ilchenko, Remy Bonnin, Eduardo PC Rocha, Eugen Pfeifer
+Karina Ilchenko, Remy Bonnin, Eduardo PC Rocha and Eugen Pfeifer
+[ADD LINK]
 
 
