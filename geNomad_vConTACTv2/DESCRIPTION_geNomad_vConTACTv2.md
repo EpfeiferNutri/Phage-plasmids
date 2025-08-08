@@ -36,13 +36,14 @@ For installation instructions and detailed user guides, see [geNomad documentati
 
 **geNomad:**
 
--   Any FASTA file containing nucleotide sequences.
+-   Nucleotide FASTA file 
 
 **vConTACT v2:**
 
--   A FASTA file of amino acid sequences.
--   A "gene-to-genome" mapping file (`.tsv` or `.csv` format).
--   **For P-P detection**: a reference dataset of known P-Ps.
+-   A protein sequences FASTA file 
+-   A "protein-to-genome" mapping file (`.tsv` or `.csv` format).
+-   **For P-P detection**: include a reference P-P dataset in the protein and protein-to-genome tables.
+  Use --db flag "None" in vcontact2 
 
 ### **Running**
 
@@ -52,7 +53,7 @@ For installation instructions and detailed user guides, see [geNomad documentati
 
 genomad end-to-end [OPTIONS] INPUT OUTPUT DATABASE
 
-vcontact2 --raw-proteins [proteins file] --proteins-fp [gene-to-genome mapping file] --output-dir [target output directory]
+vcontact2 --raw-proteins [proteins file] --proteins-fp [gene-to-genome mapping file] --db None --output-dir [target output directory]
 ```
 
 # Interpretation and general recommendations
