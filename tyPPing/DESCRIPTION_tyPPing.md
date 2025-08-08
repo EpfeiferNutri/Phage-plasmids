@@ -53,7 +53,7 @@ tyPPing/
 
 -   **Requirements:**
 
-    -   **HMMER** must be installed and accessible via the command line (used for hmmsearch) [REF].
+    -   **HMMER** must be installed and accessible via the command line (used for hmmsearch).
 
     -   **R** installed (version ≥ 4.0) [link].
 
@@ -89,7 +89,7 @@ To run `tyPPing.R` (for complete genomes) or `tyPPing_for_draft_genomes.R` (for 
 
 #### 1. Search for P-P specific proteins in target genomes
 
-Run `hmmsearch` (from HMMER) to scan the protein sequences of target genomes (e.g., `proteins.fasta`) against the P‑P type‑specific profile HMMs (`tyPPing_signarture_profiles.hmm`). For detailed HMMER documentation, see [REF].
+Run `hmmsearch` (from HMMER) to scan the protein sequences of target genomes (e.g., `proteins.fasta`) against the P‑P type‑specific profile HMMs (`tyPPing_signarture_profiles.hmm`). 
 
 Example command:
 
