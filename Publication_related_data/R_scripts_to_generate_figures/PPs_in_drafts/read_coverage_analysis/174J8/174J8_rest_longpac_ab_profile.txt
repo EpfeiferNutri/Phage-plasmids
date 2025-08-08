@@ -1,0 +1,20 @@
+# msamtools version 1.1.3
+# Command: msamtools profile --multi=proportional --label=174J8_viral_long_pac --unit=ab --nolen -o mapping/174J8/rest_longpac_ab_profile.txt.gz -
+# Total inserts       :      NA (    NA%)
+# Mapped inserts      :   39453 (    NA%)
+#   - Multiple mapped :       3 (    NA%)
+#   - Uniquely mapped :   39450 (    NA%)
+# Purged inserts      :      NA (    NA%) due to ambiguous mapping or low abundance features
+# Effective inserts   :   39453 (    NA%)
+# Estimated seq. length for 'Unknown': NA
+174J8_viral_long_pac
+Unknown	0
+contig_1	25362.897
+contig_11	2926.3114
+contig_13	0
+contig_14	2262
+contig_2	2918.1032
+contig_4	11
+contig_5	5909.6688
+contig_7	59.01977
+contig_9	4
