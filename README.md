@@ -1,8 +1,8 @@
 # **tyPPing** and other methods for detecting phage-plasmids
 
-**For further information, see: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
+**For more information, see: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
 
-Here you can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)** (folders named after each approach). 
+Here you can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)**. The folders are named after each approach, and see DESCRIPTION.md for details. 
 Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
 ## Repository structure:
@@ -12,13 +12,9 @@ Data and scripts required to reproduce analysis and figures of our study are in 
 tyPPing is a user-friendly, fast and accurate method, designed for the sensitive and efficient detection of distinct P-P types. Currently it finds P-Ps of the type AB_1, P1_1, P1_2, N15, SSU5, pMT1, pCAV, pSLy3, pKpn, and cp32.
 It uses protein profiles to search sequences for patterns (frequency and compositional sets) of conserved P-P proteins. If a match also fits the typical size range, it is predicted as a P-P with a distinct confidence.
 
-`DESCRIPTION_tyPPing.md` describes how to use tyPPing for P-P detection.
-
 ### *MM-GRC*
 
 MM-GRC (**m**ulti-**m**odel **g**ene **r**epertoire **c**lustering) is our first method to classify P-Ps, that we developed in PMID: 33590101. It is an integrated approach combining functional annotation (with phage- and plasmid-specific HMM profiles), machine learning (Random Forest, RF) models, and which was complemented with a literature review. It relies on the gene repertoire relatedness to type P-Ps. It detects various P-P types including diverse communities and unrelated putative P-Ps (singletons).
-
-`DESCRIPTION_MM-GRC.md` describes how to detect and type P-Ps using MM-GRC.
 
 ### *geNomad_vConTACT2*
 
@@ -28,13 +24,11 @@ geNomad is a computational tool for classifying nucleotide sequences as phages, 
 
 vConTACT v2 is a viral classification tool that clusters viral genomes based on shared gene content [REF]. Here, it is used to further group the P-P candidates identified by geNomad. Plasmid genomes predicted to be phage-like are compared with a reference set of known P-Ps to determine their type based on similarity.
 
-`DESCRIPTION_geNomad_vConTACT2.md` provides instructions for using geNomad and vConTACT v2 to detect P-Ps.
 
 ### *Publication_related_data*
 
 This folder contains the scripts, data, and supplementary materials needed to reproduce the figures and analyses presented in the publication [REF].
 
-`DESCRIPTION_publication_data.md` provides more detailed information.
 
 ## Files stored in Zenodo repository
 
