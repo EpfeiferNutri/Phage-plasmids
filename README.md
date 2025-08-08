@@ -9,7 +9,7 @@ Data and scripts required to reproduce analysis and figures of our study are in 
 
 ### *tyPPing*
 
-tyPPing is a user-friendly, fast and accurate method, designed for the sensitive and efficient detection of distinct P-P types. Currently it finds P-Ps of the type AB_1, P1_1, P1_2, N15, SSU5, pMT1, pCAV, pSLy3, pKpn, and cp32.
+tyPPing is a user-friendly, fast and accurate method to detect P-Ps. Currently it finds P-Ps of the type AB_1, P1_1, P1_2, N15, SSU5, pMT1, pCAV, pSLy3, pKpn, and cp32.
 It uses protein profiles to search sequences for patterns (frequency and compositional sets) of conserved P-P proteins. If a match also fits the typical size range, it is predicted as a P-P with a distinct confidence.
 
 ### *MM-GRC*
