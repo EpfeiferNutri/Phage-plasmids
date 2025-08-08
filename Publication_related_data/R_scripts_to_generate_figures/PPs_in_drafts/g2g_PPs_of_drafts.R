@@ -6,16 +6,16 @@ library(readxl)
 #### make a plot of the genomes using gggenomes
 
    # load in genome table (sizes, accessions, seq id, etc.)
-    pps_df = read_tsv("data_PPs_induction/g2g_plots/pps_table.tsv")
+    pps_df = read_tsv("pps_table.tsv")
  
    # PP gene tbl
-   genes_table = read_tsv("data_PPs_induction/g2g_plots/PP_genes_table.tsv")
+   genes_table = read_tsv("PP_genes_table.tsv")
  
  ### BBH tbl
-   BBH_tbl = read_tsv("data_PPs_induction/g2g_plots/BBH_tbl.tsv")
+   BBH_tbl = read_tsv("BBH_tbl.tsv")
  
   # wGRR, not needed for plot, just for inspection
-   wGRR = read_tsv("data_PPs_induction/g2g_plots/wGRR_tbl.tsv")
+   wGRR = read_tsv("wGRR_tbl.tsv")
     
    # select genomes to plot
    plot_df = pps_df %>% 
@@ -55,4 +55,5 @@ library(readxl)
 
   
   
+
   
