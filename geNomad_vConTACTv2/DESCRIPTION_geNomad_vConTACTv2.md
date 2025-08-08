@@ -1,32 +1,30 @@
 # Introduction
 
-**geNomad** [REF] is a tool for classifying and annotating mobile genetic elements as phages or plasmids by combining gene content analysis with deep learning. Although it is not specifically designed for **phage-plasmid (P-P)** detection, it can serve as a useful first screen for potential P-Ps by identifying plasmid sequences with phage-like features.
+**geNomad** is a tool for classifying and annotating mobile genetic elements as phages, integrated phages or plasmids. It uses gene content analysis and deep learning approaches. It is not specifically designed for P-P detection, but it can serve as a useful screen. We tested geNomad by looking for phage sequences in a plasmids database.
 
-**vConTACT v2** [REF] is a viral classification tool that clusters sequences based on gene-sharing networks. When plasmids identified as phage-like by geNomad (putative P-Ps) are analyzed together with a reference dataset of known P-Ps, vConTACT v2 can effectively group them into the known types.
+**vConTACT v2** is a viral classification tool that groups seqeuneces with a reference dataset using gene-sharing networks. We detected P-Ps by geNomad, and used vConTACT v2 to cluster them with a reference dataset of typed P-Ps. vConTACT v2 effectively grouped these sequences with a comparabale accuracy as our previous approach (MM-GRC, and tyPPing).
 
-This document describes the procedure for using geNomad and vConTACT v2 on plasmid sequences and explains how to interpret the results in the context of P-P detection and typing.
+**Quick guide:**
 
-**Quick interpretation guide:**
+1.  Run geNomad on a set of sequences that are described to be plasmids.
 
-1.  Run geNomad on a set of plasmid sequences.
+2.  Interpretation of geNomad output:
 
-2.  Interpret the geNomad output based on the assigned classification:
+    -   If classified as phage → putative P-P
 
-    -   If classified as phage → candidate phage-plasmid (P-Ps)
+    -   If classified as prophage → reject as P-Ps are not integrated prophages, or undergo further evaluation using complementary tools
 
-    -   If classified as prophage → further evaluation recommended using complementary tools (should be excluded unless supported by additional evidence)
+    -   If classified as plasmid → reject, since it is likely a true plasmid (not a P-P)
 
-    -   If classified as plasmid → likely a true plasmid (not a P-P)
-
-3.  Run vConTACT v2 on the set of putative P-Ps from the previous step combined with a reference P-P dataset.
+3.  Run vConTACT v2 on the set of putative P-Ps from the previous step combined with a reference P-P dataset. You can use the 1416 P-Ps from PMID: 38378896, or (recommended) filter this datatst for P-Ps with high confidence (assigned by tyPPing).
 
 4.  Interpret clustering results:
 
-    -   If a candidate P-P clusters with known P-Ps → consider it a putative P-P of the corresponding type.
+    -   If a candidate P-P clusters with a typed P-P → P-P of the corresponding type.
 
-    -   If it clusters elsewhere or remains unclustered → likely not a P-P, or it may be too diverse from the known types.
+    -   If it clusters elsewhere or remains unclustered → unknown or not a P-P
 
-    -   If multiple reference P-Ps from different types cluster together → the assigned type is identifined as a concatenation of all relevant types.
+    -   If it clusters with multiple typed P-Ps → likely a P-P, a co-integration or recombination product
 
 # Usage
 
@@ -59,13 +57,9 @@ vcontact2 --raw-proteins [proteins file] --proteins-fp [gene-to-genome mapping f
 
 # Interpretation and general recommendations
 
--   geNomad is a fast and scalable tool for screening large plasmid datasets and can effectively detect P-Ps with strong phage signatures. However, it may produce conflicting predictions, especially for integrated or hybrid elements, and for P-Ps that may lack clear phage signatures (such as cp32).
+-   geNomad is a fast and scalable tool for screening large plasmid datasets and can effectively detect P-Ps. However, it may produce conflicting predictions (P-Ps detected as integrated prophages or plasmids) and for P-Ps that may lack clear phage signatures (such as cp32). For unsure candidates, cross results of geNomad with predictions of tyPPing and MM-GRC. 
 
--   For reliable results, combine geNomad with MM-GRC to detect P-P singletons and P-Ps from diverse communities.
-
--   vConTACT v2 is not tailored for P-P detection, but it can be used for type assignment when applied to target and reference datasets combined. Its accuracy depends on the quality of both datasets.
-
--   For best performance, combine vConTACT v2 with additional tools like MM-GRC to improve type assignment and reduce false results.
+-   vConTACT v2 accuracy depends on the quality of the used reference dataset. To improve performance, combine vConTACT v2 with additional tools like MM-GRC and tyPPing.
 
 # Results summary on 05/23 dataset
 
@@ -94,23 +88,23 @@ We screened the large plasmid dataset to detect putative P-Ps with strong phage 
 
 -   As input dataset we processed 38,051 plasmid sequences from non-redundant NCBI RefSeq, collected in May 2023 (referred to as "05/23").
 
--   geNomad (end-to-end) was executed in default mode with the plasmid sequences listed in `0523_plasmids_for_geNomad.xlsx`. It used the geNomad database v1.5 and was executed on 25 CPUs on the Migale computational cluster [REF], with a total runtime of 6 hours and 17 minutes.
+-   geNomad (end-to-end) was executed in default mode with the plasmid sequences listed in `0523_plasmids_for_geNomad.xlsx`. It used the geNomad database v1.5 and was executed on 25 CPUs on the Migale computational cluster [https://migale.inrae.fr/], with a total runtime of 6 hours and 17 minutes.
 
--   Standard geNomad output summary tables (from `<prefix>_summary/` folder) include replicons from 05/23 dataset predicted as plasmids (`geNomad_plasmid_summary_on_0523_plasmids.tsv`) and ones predicted as phages / prophages (`geNomad_virus_summary_on_0523_plasmids.tsv)`.
+-   Standard geNomad output summary tables (from `<prefix>_summary/` folder) include replicons from 05/23 dataset predicted as plasmids (`geNomad_plasmid_summary_on_0523_plasmids.tsv`) and ones predicted as phages or prophages (`geNomad_virus_summary_on_0523_plasmids.tsv)`.
 
--   Replicons listed in `geNomad_virus_summary_on_0523_plasmids.tsv` and classified as phages (topology != "Provirus") were selected as potential P-Ps.
+-   Replicons listed in `geNomad_virus_summary_on_0523_plasmids.tsv` and classified as not prophages (topology != "Provirus") were selected as potential P-Ps.
 
 -   Detection summary for 05/23 dataset (see Table S1):
 
-    -   The virus summary table included 2,333 viral predictions, with 1,714 classified as phages (putative P-Ps) and 619 as prophage-containing replicons.
+    -   The virus summary table included 2,333 viral predictions, with 1,714 classified as phages (putative P-Ps) and 619 as prophages.
 
-    -   Among these, 804 new putative P-Ps were identified (after excluding 910 known P-Ps), and 407/804 were assigned to well-defined P-P types.
+    -   Among these, 804 new P-Ps are novel in 05/23, (excluding 910 already known in 03/21), and 407/804 overlap with the well-defined P-P types.
 
-    -   geNomad recovered between 69.2% and 79.5% of known P-Ps, meaning some were misclassified as plasmids (such as cp32) or as prophages (such as AB_1).
+    -   geNomad recovered between 69.2% and 79.5% of known P-Ps, i.e. 20-30% were misclassified as plasmids (such as cp32) or as prophages (many of AB_1).
 
 **Step 2: running vConTACT v2**
 
-In the next step, we used vConTACT v2 to cluster putative P-Ps and assign types based on gene-sharing with a reference dataset (1416 P-P from [REF]).
+In the next step, we used vConTACT v2 to cluster putative P-Ps and assign types based on gene-sharing with a reference dataset (1416 P-P from PMID: 38378896).
 
 -   As input dataset we processed 2,267 sequences (`from 0523_plasmids_ref_PPs_for_vConTACT.csv`), including all putative P-Ps classified as phages by geNomad and the reference P-P dataset.
 
