@@ -1,25 +1,18 @@
 # Introduction
 
-Multi-model gene repertoire clustering, or short **MM-GRC,** is a modular computational pipeline designed to detect and type phage–plasmids (P-Ps) across large phage and plasmid datasets. It can detect P-Ps from well-defined types, diverse communities and novel elements (singletons).
+Multi-model gene repertoire clustering, or short **MM-GRC,** was designed to detect and type P-Ps in phage and plasmid datasets. It detects P-Ps of well-defined and other types (including singletons).
 
-This document describes how to run **MM-GRC** on plasmid and phage sequences and how to interpret the output.
+**MM-GRC** needs to be run on plasmid and phage sequences separetly. 
 
-**MM-GRC workflow overview:**
+**MM-GRC workflow**
 
-1.  Screening of target proteins using specific HMM profiles.
+1.  Annotation of target proteins of phages and plasmids using specific HMMs. Phage sequencew with plasmids profiles and vice versa for plasmid sequences.
 
-2.  Initial P-P detection:
+2.  
+    A) To detect P-Ps in plasmid databases use random forest classifiers. Consider only elements with genome sizes between 10 kb and 300 kb.
+    B) Phage sequences with plasmid-like replication and partition proteins are considered to be putative P-Ps. 
 
-    A)  Detect P-Ps in plasmid sequences using a pre-trained random forest (RF) classifiers.
-    B)  Curate phage sequences manually for the presence of plasmid-like replication and partition proteins.
-
-3.  Calculate weighted gene repertoire relatedness (wGRR) values among P-Ps.
-
-4.  Assign new P-Ps to well-defined groups, diverse communities or singletons based on similarity to a reference set of known P-Ps .
-
-Note: consider elements with genome sizes between 10 kb and 300 kb.
-
-**Folder structure:**
+3.  Calculate weighted gene repertoire relatedness (wGRR) between putative P-Ps and include reference dataset (e.g. typed P-Ps). Assign new P-Ps to well-defined groups, diverse communities or singletons using the similarity to the reference set P-Ps.
 
 ```{bash eval=FALSE, include=FALSE}
 MM-GRC/
@@ -37,11 +30,11 @@ MM-GRC/
 
 ## **Setup & input data**
 
-To run MM-GRC successfully, ensure the following components are installed and accessible:
+To run MM-GRC ensure the following components are installed and accessible:
 
-**`MM-GRC/` folder with necessary input data.**
+**`MM-GRC/` with necessary input data.**
 
-**Other input data available on [<https://zenodo.org/uploads/add_valid_link>]:**
+**Furter relevant input data is available on [<https://zenodo.org/uploads/add_valid_link>]:**
 
 -   `phage.hmm` – phage-specific HMM profiles.
 
@@ -55,48 +48,48 @@ To run MM-GRC successfully, ensure the following components are installed and ac
 
 -   R (version ≥ 4.0) with required packages:
 
-    -   `ranger` for RF model implementation and `foreach` for iterative processing
+    -   `ranger` for random forest model and `foreach` for iterative processing
     -   `rhmmer` to parse and work with HMMER outputs and `seqinr` for biological sequence data analysis
-    -   `data.table`, `dtplyr`, `readxl`, `foreach`, `tidyverse` for data handling and manipulation.
+    -   `data.table`, `readxl`, `tidyverse` for data handling and manipulation.
 
 **Input dataset:**
 
--   **A FASTA-formatted amino acid file of target genomes**, sutable for the hmmsearch. Protein sequences should be named as given by default from prodigal: genome/contig-name_protein-number (e.g. contig1_1, genome/contig1_2, genome/contig1_3, etc).
+-   **A protein fasta file of target sequence** for the hmmsearch. Protein sequences should be named as given by default from prodigal: genome_contig-name_protein-number (e.g. contig1_1, genome_contig1_2, genome_contig1_3, etc).
 
-## **Running MM-GRC pipeline**
+## **To run MM-GRC**
 
-### **A) MM-GRC for plasmid sequences**
+### **A) For plasmid sequences**
 
-#### 1. Search for phage proteins in plasmid genomes
+#### 1. Search for phage proteins
 
-Use `hmmsearch` (from HMMER) to scan target plasmid protein sequences (e.g. `plasmid_proteins.fasta`) against HMM profiles in `phage.hmm`. to detect phage-specific features. 
+Use `hmmsearch` (from HMMER) to scan target plasmid protein sequences (e.g. `plasmid_proteins.faa`) against HMM profiles in `phage.hmm`. to detect phage-specific features. 
 
-#### 2. Detect putative P-P using the RF classifiers
+#### 2. Detect putative P-P using the random forest models
 
-Run the `Tree_based_classification.R` script to identify P-P candidates on phage-specific HMM hits from the previous step.
+Run the `Tree_based_classification.R` script 
 
 ***Important***: Before running, update all file paths in the script to match your local directory structure.
 
 -   Required input:
 
     1.  `phage_hmm_plasmid_proteins_output.tbl.out` – HMMER output from step 1.
-    2.  `200122_func_cat_pvogs_pfams_tigfams.xlsx` – `phage.hmm` functional annotation data.
-    3.  `plasmid_proteins.fasta` – protein sequences of the target plasmids.
-    4.  `models/` – folder containing pre-trained random forest models.
+    2.  `200122_func_cat_phage_hmms.xlsx` – `phage.hmm` functional categories of phage HMMs.
+    3.  `plasmid_proteins.faa` – protein sequences of the target plasmids.
+    4.  `models/` – random forest models.
 
 -   Output files:
 
-    1.  `model_features_predicted_stats.txt` includes mean phage probability per plasmid (averaged across all models)
-    2.  `PP_list_stats_by_model.tsv` - filtered list of putative P-Ps (phage probability \> 0.5)
-    3.  `PP_protein_seqs.fasta` - multi fasta file with protein sequences of predicted P-Ps (used as input for the next step)
+    1.  `model_features_predicted_stats.txt` includes mean phage probability per plasmid (averaged across all 10 models)
+    2.  `PP_list_stats_by_model.tsv` - putative P-Ps (phage probability \> 0.5)
+    3.  `PP_protein_seqs.faa` - protein fasta file of predicted P-Ps (used as input for the next step)
 
 #### 3. Run MMseqs2 to compare protein sequences
 
-To assess protein-level similarity, first combine the predicted P-P protein sequences (`PP_protein_seqs.fasta`) with protein sequences from the reference P-P dataset. This combined file (e.g., `PP_protein_seqs_extended.fasta`) will be used as input for MMseqs2 `search` to perform all-vs-all protein sequence comparison and detect homologous proteins across putative and known P-Ps. Output file from `convertalis` (e.g., `pp_protein_seqs.m8`) is processed in the next step.
+Concatenate predicted P-P protein sequences (`PP_protein_seqs.faa`) with protein sequences from a reference P-P dataset. MMseqs2 `search` will use this file (e.g., `PP_protein_seqs_extended.faa`) to perform an all-vs-all protein sequence comparison. Output file from `convertalis` (e.g., `pp_protein_seqs.m8`) is processed in the next step.
 
 #### 4. Compute wGRR values
 
-Run the `wGRR_MGEs.R` script to calculate pairwise gene repertoire relatedness for all candidate and reference P-Ps.
+Run `wGRR_MGEs.R` to compute the wGRR for all P-Ps (putative and reference).
 
 ***Important***:
 
@@ -111,49 +104,45 @@ R < wGRR_MGEs.R --no-save
 
 -   Input files:
 
-    1.  `pp_protein_seqs.m8` — protein similarity output from MMseqs2.
-    2.  `PP_protein_seqs_extended.fasta` — merged protein dataset containing putative and reference P-P sequences.
+    1.  `pp_protein_seqs.m8` — pairwise comparison output table of all P-P proteins.
+    2.  `PP_protein_seqs_extended.faa` — fasta file with all P-P proteins (putative and reference)
 
 -   Output files:
 
-    1.  `pp_BBH_df.tsv` — table of best bidirectional hits (BBHs).
-    2.  `pp_wGRR_df.tsv` — table of pairwise weighted gene repertoire relatedness (wGRR) values.
+    1.  `pp_BBH_df.tsv` — best bidirectional hits (BBHs).
+    2.  `pp_wGRR_df.tsv` — wGRR
 
 #### 5. Assigning P-P types
 
-Newly predicted P-Ps are classified into defined P-P types based on wGRR scores.
+P-Ps are classified into P-P types based on wGRR scores.
 
-A candidate genome should be assigned to a known P-P type if:
+Criteria:
+1.  wGRR ≥ 0.5 to one of the known P-Ps
+2.  At least 50% of its proteins match a typed P-P
 
-1.  It has wGRR ≥ 0.5 to one of the known P-Ps
-2.  At least 50% of its proteins match a known P-P.
-
-If multiple hits are found, the P-P is assigned the type of the element with the highest wGRR value.
+Note: If a P-P matches multiple typed P-Ps, the type of the best wGRR (highest value) is assigned. 
 
 ### **B) MM-GRC for phages**
 
-#### 1. Search for plasmid-associated proteins in phage genomes
+#### 1. Annotating phagen genomes with plasmid functions
 
-Use `hmmsearch` (HMMER) to scan target phage protein sequences (e.g. `phages.fasta`) against plasmis-specific profile HMMs `rep_plasmid_annotation.hmm` for replication and `par_plasmid_annotation.hmm` for partition systems.
+Use `hmmsearch` (HMMER) is used to scan target phage protein sequences (e.g. `phages.faa`) against plasmid HMMs `rep_plasmid_annotation.hmm` for replication and `par_plasmid_annotation.hmm` for partition systems.
 
 #### 2. Detect putative P-P
 
-Phage genomes can be considered candidate P-Ps if they meet one of the following criteria: contain **≥ 2 partition (par) genes**, or contain **≥ 1 replication (rep) gene and ≥ 1 partition (par) gene,** or the phage is showing a **wGRR ≥ 0.4** with known P-Ps
+If a phage sequences contains replication and/or partition systems, it is considered as a P-P. We applied following criteria: **≥ 2 partition (par) genes**, or contain **≥ 1 replication (rep) gene and ≥ 1 partition (par) gene,** or the phage is showing a **wGRR ≥ 0.4** with known P-Ps.
+We strongly recommend a manual inspection to validate these candidates.
 
-***Important***: Manual curation is required to validate these candidates.
-
-#### Steps 3 to 5 are the same as for plasmids.
-
-Proceed with MMseqs2 comparison, wGRR computation, and type assignment as described in "**A) MM-GRC for plasmids"** above.
+#### Steps 3 to 5 are the same as above (computing wGRR and assign types).
 
 # Results summary on 05/23 dataset
 
--   As input, we used 38,051 plasmid sequences retrieved from the non-redundant NCBI RefSeq database in May 2023 (referred to as the “05/23” dataset). All sequences were annotated as plasmids in RefSeq. The list of NCBI accession numbers is available in `MM-GRC/0523_plasmids_for_MM_GRC.xlsx`.
+-   As input, we used 38,051 sequences annotated as plasmids (referred to as the “05/23” dataset). The list of NCBI accession numbers is available in `MM-GRC/0523_plasmids_for_MM_GRC.xlsx`.
 
--   MM-GRC was run on the Migale computational cluster using 25 CPUs with total runtime \~25 hours (including 23h37m for HMM search against `phage.hmm`)
+-   MM-GRC was run using 25 CPUs (on the Migale computational cluster) with total runtime of ~25 h (of 23h37m were needed for the HMM search against `phage.hmm`)
 
 -   Detection summary for 05/23 dataset (see Table S1):
 
-    -   Total number of new P-Ps detected: 926
+    -   Total number of P-Ps new in 05/23 (and not already present in 03/21): 926
 
-    -   Number of new P-Ps assigned to well-defined P-P types: 500
+    -   Number of these P-Ps assigned to well-defined types: 500
