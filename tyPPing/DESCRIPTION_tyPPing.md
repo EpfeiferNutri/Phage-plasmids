@@ -59,8 +59,7 @@ tyPPing/
     -   "rhmmer" R package is required (not available on CRAN) [link]. You can install it using:
 
         ```{r eval=FALSE, include=FALSE}
-        devtools::install_github('arendsee/rhmmer')    
-        
+        devtools::install_github('arendsee/rhmmer')
         ```
 
 -   Download the P-P HMMs **`tyPPing_signarture_profiles.hmm`** (also available here 10.5281/zenodo.16616313).
