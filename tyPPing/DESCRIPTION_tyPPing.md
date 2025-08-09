@@ -29,7 +29,7 @@ After that, tyPPing script processes the `--domtblout` output from the HMM searc
 
 P-P type and confidence (**High**, **Medium**, or **Low**) to the prediction are assigned by considering MinProteins, Composition and genome size criteria. The results are summarized in `Final_prediction_table.tsv`.
 
-The **`tyPPing/`** folder contains the main scripts, input tables, and one example data set.
+The **`tyPPing/`** folder contains the main scripts, input tables, HMMs, and one example data set.
 
 ```{bash eval=FALSE, include=FALSE}
 tyPPing/
@@ -40,6 +40,8 @@ tyPPing/
 │   ├── Compositions_information_table.tsv # Profile composition sets per P-P type
 │   └── Profile_information_table.tsv      # Annotation information (used by tyPPing)
 ├── small_example_test_data/     # Includes example input/output for 20 genomes
+├── tyPPing_signarture_profiles.hmm.zip     # compressed HMM profiles. Needs to be unzipped befor usage
+
 ```
 
 # Usage
@@ -57,10 +59,11 @@ tyPPing/
     -   "rhmmer" R package is required (not available on CRAN) [link]. You can install it using:
 
         ```{r eval=FALSE, include=FALSE}
-        devtools::install_github('arendsee/rhmmer')
+        devtools::install_github('arendsee/rhmmer')    
+        
         ```
 
--   Download the P-P HMM profiles file **`tyPPing_signarture_profiles.hmm`** from [Zenodo link].
+-   Download the P-P HMMs **`tyPPing_signarture_profiles.hmm`** (also available here 10.5281/zenodo.16616313).
 
 ## Input data requirements
 
