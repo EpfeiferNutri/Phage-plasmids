@@ -50,8 +50,7 @@ Further files are available at the Zenodo repository: **[Link to the repository]
 
 ## Citing tyPPing
 If you like tyPPing and you use it for your work, please cite: 
-'Efficient detection and typing of phage-plasmids.' by
-Karina Ilchenko, Remy Bonnin, Eduardo PC Rocha and Eugen Pfeifer
+'Efficient detection and typing of phage-plasmids.'
 [ADD LINK]
 
 
