@@ -10,11 +10,11 @@
 
 2.  Interpretation of geNomad output:
 
-    -   If classified as phage → putative P-P
+    -   If classified as phage → putative P-P.
 
-    -   If classified as prophage → reject as P-Ps are not integrated prophages, or undergo further evaluation using complementary tools
+    -   If classified as prophage → reject as P-Ps are not integrated prophages, or undergo further evaluation using complementary tools.
 
-    -   If classified as plasmid → reject, since it is likely a true plasmid (not a P-P)
+    -   If classified as plasmid → reject, since it is likely a true plasmid (not a P-P).
 
 3.  Run vConTACT v2 on the set of putative P-Ps from the previous step combined with a reference P-P dataset. You can use the 1416 P-Ps from PMID: 38378896, or (recommended) filter this datatst for P-Ps with high confidence (assigned by tyPPing).
 
@@ -22,25 +22,25 @@
 
     -   If a candidate P-P clusters with a typed P-P → P-P of the corresponding type.
 
-    -   If it clusters elsewhere or remains unclustered → unknown or not a P-P
+    -   If it clusters elsewhere or remains unclustered → unknown or not a P-P.
 
-    -   If it clusters with multiple typed P-Ps → likely a P-P, a co-integration or recombination product
+    -   If it clusters with multiple typed P-Ps → likely a P-P, a co-integration or recombination product.
 
 # Usage
 
 ### **Tool setup & Installation**
 
-For installation instructions and detailed user guides, see [geNomad documentation](https://portal.nersc.gov/genomad/index.html) and [vConTACTv2 documentation](https://bitbucket.org/MAVERICLab/vcontact2/src/master/).
+For installation instructions and detailed user guides, see [geNomad](https://portal.nersc.gov/genomad/index.html) and [vConTACTv2](https://bitbucket.org/MAVERICLab/vcontact2/src/master/) documentation.
 
 ### Input data **requirements**
 
 **geNomad:**
 
--   Nucleotide FASTA file 
+-   Nucleotide FASTA file.
 
 **vConTACT v2:**
 
--   A protein sequences FASTA file 
+-   A protein sequences FASTA file.
 -   A "protein-to-genome" mapping file (`.tsv` or `.csv` format).
 -   **For P-P detection**: include a reference P-P dataset in the protein and protein-to-genome tables.
   Use --db flag "None"
