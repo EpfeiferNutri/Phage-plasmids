@@ -1,6 +1,6 @@
 # Introduction
 
-**tyPPing** is an R-based pipeline designed for fast and accurate P-P detection. It uses a curated set of protein profiles trained on well-known P-P types to find patterns of conserved signature proteins. If a geiven-sequence passes the threshold of these pattern (MinProteins and Composition), are fit the typical size range of the P-P types, than it is detected as a P-P with a confidence score. This allows users to quickly identify  P-Ps, making tyPPing a practical tool for large-scale P-P screening and systematic classification.
+**tyPPing** is an R-based pipeline designed for fast and accurate P-P detection. It uses a curated set of protein profiles trained on well-known P-P types to find patterns of conserved signature proteins. If a given sequence passes the thresholds of these patterns (MinProteins and Composition) and fits the typical size range of the corresponding P-P type, than it is reported as a P-P with a confidence score. This allows users to quickly identify P-Ps, making tyPPing a practical tool for large-scale P-P screening and systematic classification.
 
 Currently, tyPPing can detect the following P‑P types:
 
@@ -22,14 +22,14 @@ Use **HMMER** (`hmmsearch`) to compare your multi-protein FASTA file against the
 
 **Step 2. Run tyPPing (R script)**
 
-After that, tyPPing script processes the `--domtblout` output from the HMM search using:
+tyPPing processes the `--domtblout` output from the HMM search using two approaches:
 
--   **MinProteins** counts how many conserved P-P proteins are detected by the profiles using the sequence score as a cutoff. Sequences are kept, that have at least a minimum, type-speicific number (=threshold).
--   **Composition** keeps elements only if they match unique sets of P-P proteins that are defined for a given P-P type. Proteins are considered as detected, if they cover at least 50% of the profile. We use type-specific variations of the composition sizes (incomplete sets) by allowing gaps (number of not detected proteins).  
+-   **MinProteins** branch counts how many highly conserved P-P proteins are detected by the profiles using the sequence score as a cutoff. Sequences are kept if they have at least a minimum type-speicific number (=threshold).
+-   **Composition** branch keeps elements only if they match unique sets of P-P proteins that are defined for a given P-P type. Proteins are considered as detected, if they cover at least 50% of the profile. We use type-specific variations of the composition sizes (incomplete sets) by allowing gaps (number of not detected proteins).  
 
 P-P type and confidence (**High**, **Medium**, or **Low**) to the prediction are assigned by considering MinProteins, Composition and genome size criteria. The results are summarized in `Final_prediction_table.tsv`.
 
-The **`tyPPing/`** folder contains the main scripts, input tables, HMMs, and one example data set.
+The **`tyPPing/`** folder contains the main scripts, input tables, HMMs, and an example data set.
 
 ```{bash eval=FALSE, include=FALSE}
 tyPPing/
