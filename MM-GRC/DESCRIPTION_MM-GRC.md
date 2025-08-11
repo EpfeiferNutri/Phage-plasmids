@@ -6,11 +6,11 @@ Multi-model gene repertoire clustering, or short **MM-GRC,** was designed to det
 
 **MM-GRC workflow**
 
-1.  Annotation of target proteins of phages and plasmids using specific HMMs. Phage sequencew with plasmids profiles and vice versa for plasmid sequences.
+1.  Annotate target proteins of phages and plasmids using specific HMMs (phage sequences with plasmids profiles and vice versa for plasmid sequences).
 
 2.  
-    A) To detect P-Ps in plasmid databases use random forest classifiers. Consider only elements with genome sizes between 10 kb and 300 kb.
-    B) Phage sequences with plasmid-like replication and partition proteins are considered to be putative P-Ps. 
+    A) Use random forest classifiers to detect P-Ps in plasmid databases. Consider only elements with genome sizes between 10 kb and 300 kb.
+    B) Consider phage sequences that contain plasmid-like replication and partition proteins as putative P-Ps.
 
 3.  Calculate weighted gene repertoire relatedness (wGRR) between putative P-Ps and include reference dataset (e.g. typed P-Ps). Assign new P-Ps to well-defined groups, diverse communities or singletons using the similarity to the reference set P-Ps.
 
@@ -21,7 +21,7 @@ MM-GRC/
 ├── wGRR_MGEs.R                      # R script to compute wGRR between genomes
 ├── par_plasmid_annotation.hmm       # HMM profiles for plasmid partition proteins
 ├── rep_plasmid_annotation.hmm       # HMM profiles for plasmid replication proteins
-├── 200122_func_cat_pvogs_pfams_tigfams.xlsx  # Functional annotation table for phage-specific HMM profiles (phage.hmm)
+├── 200122_func_cat_phage_hmms.xlsx  # Functional annotation table for phage-specific HMM profiles (phage.hmm)
 ├── 0523_plasmids_for_MM_GRC.xlsx    # List of plasmids used as MM-GRC input
 ├── model_prediction_stats_for_0523_plasmids.tsv    # Output with P-P scores from Tree_based_classification.R 
 ```
@@ -62,7 +62,7 @@ To run MM-GRC ensure the following components are installed and accessible:
 
 #### 1. Search for phage proteins
 
-Use `hmmsearch` (from HMMER) to scan target plasmid protein sequences (e.g. `plasmid_proteins.faa`) against HMM profiles in `phage.hmm`. to detect phage-specific features. 
+Use `hmmsearch` (from HMMER) to scan target plasmid protein sequences (e.g. `plasmid_proteins.faa`) against HMM profiles in `phage.hmm` to detect phage-specific features. 
 
 #### 2. Detect putative P-P using the random forest models
 
