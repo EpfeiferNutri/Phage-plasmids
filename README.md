@@ -37,7 +37,7 @@ Further files are available at the Zenodo repository: **[Link to the repository]
 
 -   `g2g_plot_tables/` and `tyPPing_criteria_tables/` contain the tables required to produce figure of the our study using the scripts `all_g_to_g_plots_filtered.R` and `figures_methods.R` (in `Publication_related_data/`).
 
--   `draft_genomes_analysis/` – 12 complete P-P genomes that we detected in 9 incomplete genomes of carbapenem-resistant *Enterobacteriales* species. We used a modified version of tyPPing, `tyPPing_for_draft_genomes.R.`, on the draft genomes (short, long and hybrid asesmblies).
+-   `draft_genomes_analysis/` – 12 complete P-P genomes that we detected in 9 incomplete genomes of carbapenem-resistant *Enterobacteriales* species. We used a modified version of tyPPing, `tyPPing_for_draft_genomes.R`, on the draft genomes (short, long and hybrid asesmblies).
 
 ## References
 
