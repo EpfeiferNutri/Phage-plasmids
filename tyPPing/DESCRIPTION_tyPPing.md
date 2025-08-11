@@ -68,7 +68,7 @@ tyPPing/
 
 -   A multi-fasta protein file, used for the hmmsearch (e.g., `proteins.faa`).
 
--   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available here 10.5281/zenodo.16616313)..
+-   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available here 10.5281/zenodo.16616313).
 
 **2. For tyPPing scripts (Step 2):**
 
