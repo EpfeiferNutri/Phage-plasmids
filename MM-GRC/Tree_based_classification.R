@@ -24,10 +24,10 @@ library("seqinr")
 ### 1. Load functional annotation tables ####
 
 # annotation category 1: pVOGs with TIGRFAM/PFAM
-func_cat1 = read_excel(path = "path_to/P-P_detection/MM-GRC/200122_func_cat_pvogs_pfams_tigfams_v4.xlsx", sheet = 1) %>% 
+func_cat1 = read_excel(path = "path_to/P-P_detection/MM-GRC/200122_func_cat_phage_hmms.xlsx", sheet = 1) %>% 
   select(HMM, Functional_categorization)
 # annotation category 2: abundant pVOGs that cluster and do not cluster with each other (VQ: 0.75, proteins: 15)
-func_cat2 = read_excel(path = "path_to/P-P_detection/MM-GRC/200122_func_cat_pvogs_pfams_tigfams_v4.xlsx", sheet = 2) %>% 
+func_cat2 = read_excel(path = "path_to/P-P_detection/MM-GRC/200122_func_cat_phage_hmms.xlsx", sheet = 2) %>% 
   select(HMM, Functional_categorization_2)
 
 # Merge both into a unified table
