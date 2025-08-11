@@ -42,9 +42,9 @@ To run MM-GRC ensure the following components are installed and accessible:
 
 **External tools:**
 
--   HMMER installed (used for hmmsearch) [link]
+-   HMMER installed (used for hmmsearch) [link].
 
--   MMseqs2 (for all-vs-all protein sequence comparison) [link]
+-   MMseqs2 (for all-vs-all protein sequence comparison) [link].
 
 -   R (version ≥ 4.0) with required packages:
 
@@ -79,9 +79,9 @@ Run the `Tree_based_classification.R` script
 
 -   Output files:
 
-    1.  `model_features_predicted_stats.txt` includes mean phage probability per plasmid (averaged across all 10 models)
-    2.  `PP_list_stats_by_model.tsv` - putative P-Ps (phage probability \> 0.5)
-    3.  `PP_protein_seqs.faa` - protein fasta file of predicted P-Ps (used as input for the next step)
+    1.  `model_features_predicted_stats.txt` includes mean phage probability per plasmid (averaged across all 10 models).
+    2.  `PP_list_stats_by_model.tsv` - putative P-Ps (phage probability \> 0.5).
+    3.  `PP_protein_seqs.faa` - protein fasta file of predicted P-Ps (used as input for the next step).
 
 #### 3. Run MMseqs2 to compare protein sequences
 
@@ -105,12 +105,12 @@ R < wGRR_MGEs.R --no-save
 -   Input files:
 
     1.  `pp_protein_seqs.m8` — pairwise comparison output table of all P-P proteins.
-    2.  `PP_protein_seqs_extended.faa` — fasta file with all P-P proteins (putative and reference)
+    2.  `PP_protein_seqs_extended.faa` — fasta file with all P-P proteins (putative and reference).
 
 -   Output files:
 
     1.  `pp_BBH_df.tsv` — best bidirectional hits (BBHs).
-    2.  `pp_wGRR_df.tsv` — wGRR
+    2.  `pp_wGRR_df.tsv` — wGRR.
 
 #### 5. Assigning P-P types
 
