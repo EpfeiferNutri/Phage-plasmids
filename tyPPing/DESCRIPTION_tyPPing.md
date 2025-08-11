@@ -48,7 +48,7 @@ tyPPing/
 
 ## Setup & installation
 
--   **tyPPing** is an R-based tool and does not require installation. To use it, simply **clone** or download the repository.
+-   **tyPPing** is an R-based script and does not require installation. To use it, simply **clone** or download the repository.
 
 -   **Requirements:**
 
@@ -62,15 +62,13 @@ tyPPing/
         devtools::install_github('arendsee/rhmmer')
         ```
 
--   Download the P-P HMMs **`tyPPing_signarture_profiles.hmm`** (also available here 10.5281/zenodo.16616313).
-
 ## Input data requirements
 
 **1. For HMM search (Step 1):**
 
 -   A multi-fasta protein file, used for the hmmsearch (e.g., `proteins.faa`).
 
--   P-P HMMs `tyPPing_signarture_profiles.hmm`.
+-   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available here 10.5281/zenodo.16616313)..
 
 **2. For tyPPing scripts (Step 2):**
 
