@@ -2,7 +2,7 @@
 
 **For more information, see: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
 
-Here you can find the documentation, scripts, and data files necessary for the **identification of phage-plasmids (P-Ps)**. 
+Here you can find the documentation, scripts, and data necessary for the **identification of phage-plasmids (P-Ps)**. 
 
 See DESCRIPTION.md in the separate folders for details. Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
