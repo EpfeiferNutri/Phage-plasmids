@@ -35,9 +35,9 @@ Further files are available at the Zenodo repository: **10.5281/zenodo.16616313*
 
 -   `models/` – random forest models trained to detect P-Ps in plasmid datasets (used by MM-GRC).
 
--   `g2g_plot_tables/` and `tyPPing_criteria_tables/` contain the tables required to produce figure of the our study using the scripts `all_g_to_g_plots_filtered.R` and `figures_methods.R` (in `Publication_related_data/`).
+-   `g2g_plot_tables/` and `tyPPing_criteria_tables/` contain the tables required to produce figures of our study using the scripts `all_g_to_g_plots_filtered.R` and `figures_methods.R` (in `Publication_related_data/`).
 
--   `draft_genomes_analysis/` – 12 complete P-P genomes that we detected in 9 incomplete genomes of carbapenem-resistant *Enterobacteriales* species. We used a modified version of tyPPing, `tyPPing_for_draft_genomes.R`, on the draft genomes (short, long and hybrid asesmblies).
+-   `draft_genomes_analysis/` – 12 complete P-P genomes that we detected in 9 draft genomes of carbapenem-resistant *Enterobacteriales* species. We used a modified version of tyPPing, `tyPPing_for_draft_genomes.R`, on drafts assembled by short and long reads, and on hybrid assemblies.
 
 ## References
 
