@@ -49,10 +49,7 @@ HMM_search_output = read_domtblout(HMM_search_output_path)
 Necessary input data provided with tyPPing in `tyPPing_input_data/` folder:
 
 ```{r}
-Cutoffs_information = fread("tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv")
-
 Compositions_information = fread("tyPPing/tyPPing_input_data/Compositions_information_table.tsv")
-
 Profile_information = fread("tyPPing/tyPPing_input_data/Profile_information_table.tsv")
 ```
 
@@ -69,7 +66,6 @@ HMM_search_output_path = 'tyPPing/test_example/tyPPing_example_hmmsearch_output.
 output_dir_path = 'tyPPing/test_example'
 Compositions_unique_path = 'tyPPing/tyPPing_input_data/Compositions_information_table.tsv'
 Profile_info_path = 'tyPPing/tyPPing_input_data/Profile_information_table.tsv'
-ALL_cutoffs_path = 'tyPPing/tyPPing_input_data/Cutoffs_information_table.tsv'
 ```
 
 **Command line**
@@ -81,8 +77,7 @@ Rscript tyPPing.R\
 --hmm_domtbl path/to/all_pers_hmm_plasmids_0523_out.tbl.out \
 --outdir path/to/output_dir/ \
 --compositions path/to/Compositions_information_table.tsv \
---profiles path/to/Profile_information_table.tsv \
---cutoffs path/to/Cutoffs_information_table.tsv
+--profiles path/to/Profile_information_table.tsv 
 ```
 
 tyPPing output data:
