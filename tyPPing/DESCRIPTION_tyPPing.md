@@ -36,7 +36,6 @@ tyPPing/
 ├── tyPPing.R                    # Main script for complete genomes
 ├── tyPPing_for_draft_genomes.R  # Script for draft genomes (e.g., MAGs)
 ├── tyPPing_input_data/
-│   ├── Cutoffs_information_table.tsv      # tyPPing score thresholds 
 │   ├── Compositions_information_table.tsv # Profile composition sets per P-P type
 │   └── Profile_information_table.tsv      # Annotation information (used by tyPPing)
 ├── small_example_test_data/     # Includes example input/output for 20 genomes
@@ -150,8 +149,7 @@ You can run **`tyPPing.R`** (for complete genomes) or **`tyPPing_for_draft_genom
     --hmm_domtbl path/to/all_pers_hmm_plasmids_0523_out.tbl.out \
     --outdir path/to/output_dir/ \
     --compositions path/to/Compositions_information_table.tsv \
-    --profiles path/to/Profile_information_table.tsv \
-    --cutoffs path/to/Cutoffs_information_table.tsv
+    --profiles path/to/Profile_information_table.tsv 
 ```
 
 **Command‑line required arguments:**
@@ -167,8 +165,6 @@ You can run **`tyPPing.R`** (for complete genomes) or **`tyPPing_for_draft_genom
 -   `--compositions` – profile composition sets for each P‑P type (by default in: `tyPPing_input_data/Compositions_information_table.tsv`).
 
 -   `--profiles` – profile metadata, functional annotations, and mapping between HMM IDs and P-P types (by default in: `tyPPing_input_data/Profile_information_table.tsv`).
-
--   `--cutoffs` – thresholds used by the MinProteins and Composition branches per P‑P type (by default in: `tyPPing_input_data/Cutoffs_information_table.tsv`).
 
 ## Standard output summary tables
 
