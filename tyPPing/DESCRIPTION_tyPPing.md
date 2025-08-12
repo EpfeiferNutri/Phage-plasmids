@@ -143,7 +143,7 @@ You can run **`tyPPing.R`** (for complete genomes) or **`tyPPing_for_draft_genom
 **B. Command‑line mode:**
 
 ```{bash}
-    Rscript tyPPing.R\    # or tyPPing_for_draft_genomes.R
+    Rscript tyPPing.R \    # or tyPPing_for_draft_genomes.R
     --map path/to/protein_to_genome.tsv \
     --sizes path/to/genome_size.tsv \
     --hmm_domtbl path/to/all_pers_hmm_plasmids_0523_out.tbl.out \
