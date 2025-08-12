@@ -17,11 +17,16 @@ suppressMessages({
     # Load required libraries
     
     load_libraries = function() {
-      packages = c("data.table", "foreach", "tidyverse", "seqinr", "rhmmer", "argparse")
+      packages = c("data.table", "argparse", "tidyverse")
       for (pkg in packages) {
         if (!requireNamespace(pkg, quietly = TRUE)) {
-          stop(paste0("Package '", pkg, "' is required but not installed."))}
-        library(pkg, character.only = TRUE)}}
+          message(paste0("Package '", pkg, "' not found. Attempting to install..."))
+          tryCatch({install.packages(pkg)}, error = function(e) {
+            message(paste0("Failed to install '", pkg, "': ", e$message))})
+        }
+        # Try loading the package again
+        if (!require(pkg, character.only = TRUE)) {
+          stop(paste0("Package '", pkg, "' is not installed or failed to load. Please install it manually."))}}}
     
     load_libraries()
     
@@ -55,28 +60,13 @@ suppressMessages({
       
       Compositions_unique_path = '/path/to/tyPPing_parameters/Compositions_information_table.tsv'
       Profile_info_path = '/path/to/tyPPing_parameters/Profile_information_table.tsv'
-      ALL_cutoffs_path = '/path/to/tyPPing_parameters/Cutoffs_information_table.tsv'
-      
+
       # END USER INPUT SECTION
       ################################################################################
       
     } else {
       
-      # Set working directory to script location 
-      
-      setwd_script = function() {
-        args = commandArgs(trailingOnly = FALSE)
-        path = sub("^--file=", "", args[grep("^--file=", args)])
-        if (length(path)) return(setwd(dirname(normalizePath(path))))
-        if (exists("rstudioapi") && rstudioapi::isAvailable()) {
-          return(setwd(dirname(rstudioapi::getSourceEditorContext()$path)))
-        }
-        message("Could not detect script path.")
-      }
-      setwd_script()
-      
-      # Parse command-line arguments
-      
+     # Parse command-line arguments
       parser = ArgumentParser(description = 'tyPPing: Predict P-P types from HMM search output')
       
       ###  User input files required for your dataset analysis:
@@ -94,8 +84,6 @@ suppressMessages({
                           help = "Path to the composition information table (provided with the scripts in folder `tyPPing input data`)")
       parser$add_argument("--profiles", default = "tyPPing_input_data/Profile_information_table.tsv", 
                           help = "Path to the profile information table (provided with the scripts in folder `tyPPing input data`)")
-      parser$add_argument("--cutoffs", default = "tyPPing_input_data/Cutoffs_information_table.tsv",  
-                          help = "Path to the cutoffs information table (provided with the scripts in folder `tyPPing input data`)" )
       
       args = parser$parse_args()
       
@@ -113,7 +101,6 @@ suppressMessages({
       
       Compositions_unique_path = args$compositions
       Profile_info_path = args$profiles
-      ALL_cutoffs_path = args$cutoffs
       
     }
     
@@ -147,21 +134,19 @@ suppressMessages({
       mutate (PP_category = case_when(`P-P type` == "AB_1" ~ "AB",  `P-P type` == "P1_1" ~ "P11", `P-P type` == "P1_2" ~ "P12", T ~ `P-P type`))
     MinProteins_cutoff = Profile_info %>% 
       select(hmm_profile = `HMM profile ID`, sequence_score_thr = `Sequence score threshold`)
-    
-    # Read the defined cutoffs table
-    ALL_cutoffs = fread(ALL_cutoffs_path) %>% 
-      mutate(PP_category = case_when(`P-P type` == "AB_1" ~ "AB", `P-P type` == "P1_1" ~ "P11", `P-P type` == "P1_2" ~ "P12", T ~ `P-P type`), 
-             composition_tol_thr = `Tolerance to gaps`, 
-             MinProteins_min_N = `MinProteins cutoff`,
-             size_min = `Lower size limit (bp)`, size_max = `Upper size limit (bp)`)
-    
-    
+
     ################################################################################
     # Protein-to-profile HMM output pre-processing
     
     cat("Reading and processing the protein-to-profile HMM output file...\n")
     
-    HMM_search_output = read_domtblout(HMM_search_output_path) %>%
+    # the colnames 
+    HMM_domtbl_out_colnames = c("domain_name","domain_accession","domain_len","query_name","query_accession","qlen","sequence_evalue","sequence_score",
+                                "sequence_bias","domain_N","domain_of","domain_cevalue","domain_ievalue","domain_score","domain_bias"
+                                ,"hmm_from","hmm_to","ali_from","ali_to","env_from","env_to","acc","description")  
+    
+    # when reading in the table:  
+    HMM_search_output = read_table(HMM_search_output_path, comment = "#", col_names = HMM_domtbl_out_colnames) %>%
       mutate(ali_length = abs(ali_to - ali_from+1), cov_profile = round(ali_length/qlen,3)) %>% 
       select(protein_id = domain_name, hmm_profile = query_name, domain_ievalue, cov_profile, sequence_score) %>%
       inner_join(protein_to_genome_filtered %>% select(protein_id, contig_id, genome_id), by="protein_id") %>%
@@ -174,6 +159,19 @@ suppressMessages({
       mutate(PP_category = str_extract(hmm_profile, pattern=".*(?=_pers_)")) 
     
     cat("Protein-to-profile HMM output file processed successfully\n")
+    
+    ################################################################################
+    # Cutoffs information table
+    
+    ALL_cutoffs = data.frame(
+      check.names = FALSE,
+      `P-P type` = c("AB_1", "cp32", "N15", "P1_1", "P1_2", "pCAV", "pKpn", "pMT1", "pSLy3", "SSU5_pHCM2"),
+      composition_tol_thr = c(7, 6, 9, 11, 17, 3, 2, 6, 3, 3),
+      MinProteins_min_N = c(55, 18, 7, 49, 46, 30, 38, 50, 47, 71),
+      size_min = c(101329, 27653, 39838, 72057, 79071, 102639, 98807, 85066, 85190, 94107),
+      size_max = c(122444, 32756, 65948, 125381, 103576, 118316, 125007, 115126, 133911, 125751),
+      `10% mean size (bp)` = c(11189, 3020, 5289, 9872, 9132, 11048, 11191, 10010, 10955, 10993),
+      PP_category = c("AB", "cp32", "N15", "P11", "P12", "pCAV", "pKpn", "pMT1", "pSLy3", "SSU5_pHCM2"))
     
     ################################################################################
     # MinProteins branch function: 
