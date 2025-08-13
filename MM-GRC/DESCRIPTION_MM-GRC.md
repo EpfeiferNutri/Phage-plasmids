@@ -6,7 +6,7 @@ Multi-model gene repertoire clustering, or short **MM-GRC,** was designed to det
 
 **MM-GRC workflow**
 
-<img width="2428" height="936" alt="image" src="https://github.com/user-attachments/assets/5bdf6ec0-9f84-42bc-84e0-d833f13a4929" />
+<img width="2074" height="794" alt="image" src="https://github.com/user-attachments/assets/a7a4ff2d-ceb4-440f-a184-0fe5afec85c3" />
 
 1.  Annotate target proteins of phages and plasmids using specific HMMs (phage sequences with plasmids profiles and vice versa for plasmid sequences).
 
