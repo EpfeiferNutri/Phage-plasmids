@@ -123,6 +123,7 @@ tyPPing requires two input tables (TSV or CSV):
     | NC_015465 | 33004 |
     | ...       | ...   |
 
+`tyPPing_input_data/prepare_input_tables.R` script can help generate protein_to_genome.tsv and genome_size.tsv automatically, but only if protein sequences follow the default Prodigal naming (genome/contig-name_protein-number) and genome fasta files are organized in a single folder. If your data are organized differently, you will need to prepare these tables manually.
 
 #### 3. Run tyPPing 
 
