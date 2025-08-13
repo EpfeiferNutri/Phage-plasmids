@@ -44,9 +44,9 @@ To run MM-GRC ensure the following components are installed and accessible:
 
 **External tools:**
 
--   HMMER installed (used for hmmsearch) [link].
+-   [**HMMER**](<https://github.com/EddyRivasLab/hmmer>)  installed (used for hmmsearch).
 
--   MMseqs2 (for all-vs-all protein sequence comparison) [link].
+-   [MMseqs2](https://github.com/soedinglab/MMseqs2) (for all-vs-all protein sequence comparison).
 
 -   R (version ≥ 4.0) with required packages:
 
