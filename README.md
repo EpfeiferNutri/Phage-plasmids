@@ -51,6 +51,7 @@ Further files are available at the Zenodo repository: **10.5281/zenodo.16616313*
 -   [geNomad](https://portal.nersc.gov/genomad/index.html)
 -   [vConTACTv2](https://bitbucket.org/MAVERICLab/vcontact2/src/master/)
 -   [PHROGs](https://phrogs.lmge.uca.fr/)
+-   [Migale](https://migale.inrae.fr/)
 
 ## Citing tyPPing
 If you like tyPPing and you use it for your work, please cite: 
