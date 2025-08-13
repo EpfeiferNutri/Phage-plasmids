@@ -37,7 +37,7 @@ tyPPing/
 ├── tyPPing_for_draft_genomes.R  # Script for draft genomes (e.g., MAGs)
 ├── tyPPing_input_data/
 │   ├── Compositions_information_table.tsv # Profile composition sets per P-P type
-│   ├── Profile_information_table.tsv      # Annotation information (used by tyPPing)
+│   ├── Profile_information_table.tsv      # Profile annotations and scores (used by tyPPing)
 │   └── prepare_input_tables.R             # To generate size and mapping tables (optional)
 ├── small_example_test_data/     # Includes example input/output for 20 genomes
 ├── tyPPing_signarture_profiles.hmm.zip     # compressed HMM profiles. Needs to be unzipped befor usage
