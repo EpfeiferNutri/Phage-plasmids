@@ -13,7 +13,7 @@ It works with both **complete** and **draft genomes**, using two dedicated scrip
 
 **tyPPing's workflow** 
 
-<img width="1241" height="437" alt="pipeline" src="https://github.com/user-attachments/assets/557b1031-792a-4985-970d-6a1badb19e07" />
+<img width="2462" height="893" alt="image" src="https://github.com/user-attachments/assets/8b6af34b-997f-4303-bac7-fb638db0b14b" />
 
 
 **Step 1. Protein search**
