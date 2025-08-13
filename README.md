@@ -29,6 +29,8 @@ vConTACT v2 is clusters viral genomes with a reference dataset using their share
 
 Scripts, data, and supplementary materials to reproduce the figures and analyses presented in the publication.
 
+### *Zenodo repository*
+
 Further files are available at the Zenodo repository: **10.5281/zenodo.16616313**
 
 -   `tyPPing_signature_profiles.hmm` – 763 HMM profiles (concatenated) specific to the 10 P-P types. Used for protein-to-profile comparison (needed for tyPPing).
