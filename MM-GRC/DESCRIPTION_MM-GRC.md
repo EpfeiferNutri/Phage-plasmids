@@ -147,4 +147,4 @@ We strongly recommend a manual inspection to validate these candidates.
 
     -   Total number of P-Ps new in 05/23 (and not already present in 03/21): 926
 
-    -   Number of these P-Ps assigned to well-defined types: 500
+    -   Number of these P-Ps assigned to well-defined types: 498
