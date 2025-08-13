@@ -51,15 +51,9 @@ tyPPing/
 
 -   **Requirements:**
 
-    -   **HMMER** must be installed and accessible via the command line (used for hmmsearch).
+    -   [**HMMER**](<https://github.com/EddyRivasLab/hmmer>) must be installed and accessible via the command line (used for hmmsearch).
 
-    -   **R** installed (version ≥ 4.0) [link].
-
-    -   "rhmmer" R package is required (not available on CRAN) [link]. You can install it using:
-
-        ```{r eval=FALSE, include=FALSE}
-        devtools::install_github('arendsee/rhmmer')
-        ```
+    -   [**R**](<https://cran.rstudio.com/>) installed (version ≥ 4.0).
 
 ## Input data requirements
 
@@ -67,7 +61,7 @@ tyPPing/
 
 -   A multi-fasta protein file, used for the hmmsearch (e.g., `proteins.faa`).
 
--   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available here 10.5281/zenodo.16616313).
+-   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available [ADD LINK TO ZENODO]).
 
 **2. For tyPPing scripts (Step 2):**
 
@@ -90,7 +84,7 @@ Run `hmmsearch` (from HMMER) to scan the protein sequences of target genomes (e.
 Example command:
 
 ```{bash eval=FALSE, include=FALSE}
-hmmsearch -o tmp.all.out --domtblout hmm_search_for_tyPPing.tbl.out tyPPing_signarture_profiles.hmm proteins.fasta
+hmmsearch -o tmp.all.out --domtblout hmm_search_for_tyPPing.tbl.out tyPPing_signarture_profiles.hmm proteins.faa
 ```
 
 #### 2. Prepare the input files
@@ -99,7 +93,7 @@ tyPPing requires two input tables (TSV or CSV):
 
 -   **Protein‑to‑genome** mapping file (e.g., `protein_to_genome.tsv`). This table links each protein ID to its corresponding genome:
 
-    -   `protein_id` – protein identifier used in the FASTA and HMMER output
+    -   `protein_id` – protein identifier used in the FASTA and HMMER output.
 
     -   `genome_id` – genome that encodes the proteins.
 
@@ -113,9 +107,9 @@ tyPPing requires two input tables (TSV or CSV):
     | NP_052610  | NC_002128 |
     | ...        | ...       |
 
--   **Genome size** file (e.g., `genome_size.tsv`). This table linke genomes and their sizes.
+-   **Genome-sizes** file (e.g., `genome_size.tsv`). This table links genomes and their sizes.
 
-    -   `genome_id` – genome identifier
+    -   `genome_id` – genome identifier.
 
     -   `size` – genome size in base pairs (bp).
 
@@ -203,21 +197,21 @@ This table lists **all HMM hits** (not just confident predictions). It is useful
 -   **P-P score sum** – sum of *P-P scores* for all matched signature profiles.
 -   **P-P type score sum** – sum of *P-P type scores* for all matched signature profiles.
 -   **Composition** – ID of the matched set of proteins. 
--   **Composition size** – Number of P-P proteins in the defined composition set.
--   **Tolerance to gaps** – Maximum number of missing proteins in the composition set.
--   **Composition hits** – Number of matched profiles (detected in **Composition** branch).
+-   **Composition size** – number of P-P proteins in the defined composition set.
+-   **Tolerance to gaps** – maximum number of missing proteins in the composition set.
+-   **Composition hits** – number of matched profiles (detected in **Composition** branch).
 -   **Genome size (bp)** – total genome size, in base pairs.
 -   **Number of proteins** – total number encoded proteins in the genome.
 
-## tyPPing for incomplete genomes including MAGs
+## tyPPing for incomplete genomes (including MAGs)
 
-We updated tyPPings scoring system to make it work on incomplete genomes (change the counts to per genome than per sequence). Conserved P-P proteins are counted across all contigs in one genome and tested if scores meet MinProteins, Composition and the size ranges. With this change, tyPPing detects P-Ps that are split across multiple contigs with a high density of conserved P-P proteins. 
+We updated tyPPings scoring system to make it work on incomplete genomes (change the counts to per genome than per sequence). Conserved P-P proteins are counted across all contigs in a genome and tested to see if they collectively meet the MinProteins, composition, and size requirements. With this change, tyPPing detects P-Ps that are split across multiple contigs with a high density of conserved P-P proteins. 
 
 **Use `tyPPing_for_draft_genomes.R.`**
 
-Notably, the **Input tables** are different in comparison to tyPPing used for complete genomes. In the two tables (Protein-to-genome,Contig sizes), contig and genome IDs are required.
+Notably, the **Input tables** are different in comparison to tyPPing used for complete genomes. In the two tables (protein-to-genome, contig-sizes), contig and genome IDs are required.
 
--   *Protein-to-genome* file example:
+-   **Protein-to-genome** file example:
 
     | protein_id       | contig_id      | genome_id |
     |------------------|----------------|-----------|
@@ -225,7 +219,7 @@ Notably, the **Input tables** are different in comparison to tyPPing used for co
     | 170D8_contig_1_2 | 170D8_contig_1 | 170D8     |
     | 170D8_contig_1_3 | 170D8_contig_1 | 170D8     |
 
--   *Contig sizes* file example:
+-   **Contig-sizes** file example:
 
     | contig_id       | size    | genome_id |
     |-----------------|---------|-----------|
@@ -235,7 +229,7 @@ Notably, the **Input tables** are different in comparison to tyPPing used for co
 
 **Output tables** `Final_prediction_table.tsv` and `All_hmm_hits_table.tsv` include additional columns:
 
--   **MinProteins hits list** – Counts of conserved proteins detected in the contigs in MinProteins, separated by ";".
+-   **MinProteins hits list** – counts of conserved proteins detected in the contigs by MinProteins, separated by ";".
 
 -   **MinProteins contigs list** – contigs encoding the proteins that matched MinProteins, separated by ";".
 
@@ -258,7 +252,7 @@ Notably, the **Input tables** are different in comparison to tyPPing used for co
 
 ## **Interpretation and recommendations**
 
--   Prior to your analysis, please test the workflow using the small example dataset in `small_example_test_data/`. It includes 20 genomes, the required tables and the output files.
+-   Prior to your analysis, please test the workflow using the small example dataset in `test_example/`. It includes 20 genomes, the required tables and the output files.
 
 -   **High confidence** predictions are detected by **both branches** (*MinProteins* and *Composition*) and fit the expected **size** range. These are the most reliable predictions but may miss \~20% of P-Ps if only this category is considered.
 
