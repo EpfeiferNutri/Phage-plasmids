@@ -6,7 +6,7 @@ library(tidyverse)
 
 ######################################### test different vConTACT2 modes
 
-genome_by_genome_overview_0523 = fread('geNomad_vConTACTv2/vConTACTv2/vConTACT2_genome_by_genome_overview_for_0523_plasmids.csv')
+genome_by_genome_overview_0523 = fread('Publication_related_data/R_scripts_to_generate_figures/vConTACT2_genome_by_genome_overview_for_0523_plasmids.csv')
 
 # vConTACT2 default clustering
 
