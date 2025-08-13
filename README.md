@@ -4,7 +4,7 @@
 
 Here you can find the documentation, scripts, and data necessary for the **identification of phage-plasmids (P-Ps)**:
 
-<img width="2080" height="671" alt="image" src="https://github.com/user-attachments/assets/cab2eaea-9ef7-4b0d-8e31-ddf640d4e10f" />
+<img width="2059" height="682" alt="image" src="https://github.com/user-attachments/assets/8bf089c7-8f3c-4b96-b533-60152637b8b3" />
 
 See DESCRIPTION.md in the separate folders for details. Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
