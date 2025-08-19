@@ -249,7 +249,7 @@ Notably, the **Input tables** are different in comparison to tyPPing used for co
 -   **Detection accuracy:**
     -   \>99% sensitivity (especially for cp32 P-Ps) and \>99% precision compared to MM-GRC.
 -   **Running time:**
-    -   \~7 minutes to process \>38,000 plasmids (05/23 dataset) with `tyPPing.R` and additional \~1h44m for the HMM protein-to-profile comparison using HHMER.
+    -   \~7 minutes to process \>38,000 plasmids (05/23 dataset) with `tyPPing.R` and additional \~1h44m for the HMM protein-to-profile comparison using HMMER.
 
 ## **Interpretation and recommendations**
 
