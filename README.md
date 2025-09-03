@@ -1,6 +1,6 @@
 # **tyPPing** and other methods for detecting phage-plasmids
 
-**For more information, see: "Efficient detection and typing of phage-plasmids"** [ADD LINK]
+**For more information, see: ["Efficient detection and typing of phage-plasmids"](https://www.biorxiv.org/content/10.1101/2025.08.29.673033v1)**
 
 Here you can find the documentation, scripts, and data necessary for the **identification of phage-plasmids (P-Ps)**:
 
@@ -31,7 +31,7 @@ Scripts, data, and supplementary materials to reproduce the figures and analyses
 
 ### *Zenodo repository*
 
-Further files are available at the Zenodo repository: **10.5281/zenodo.16616313**
+Further files are available at the [Zenodo repository](https://doi.org/10.5281/zenodo.16616313). 
 
 -   `tyPPing_signature_profiles.hmm` – 763 HMM profiles (concatenated) specific to the 10 P-P types. Used for protein-to-profile comparison (needed for tyPPing).
 
@@ -55,7 +55,6 @@ Further files are available at the Zenodo repository: **10.5281/zenodo.16616313*
 
 ## Citing tyPPing
 If you like tyPPing and you use it for your work, please cite: 
-'Efficient detection and typing of phage-plasmids.'
-[ADD LINK]
+["Efficient detection and typing of phage-plasmids"](https://www.biorxiv.org/content/10.1101/2025.08.29.673033v1)
 
 
