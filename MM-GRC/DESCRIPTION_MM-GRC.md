@@ -36,7 +36,7 @@ To run MM-GRC ensure the following components are installed and accessible:
 
 **`MM-GRC/` with necessary input data.**
 
-**Furter relevant input data is available on [<https://zenodo.org/uploads/add_valid_link>]:**
+**Furter relevant input data is available on [Zenodo repository](https://doi.org/10.5281/zenodo.16616313):**
 
 -   `phage.hmm` – phage-specific HMM profiles.
 
