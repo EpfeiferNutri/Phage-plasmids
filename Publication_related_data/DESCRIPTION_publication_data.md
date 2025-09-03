@@ -1,6 +1,6 @@
-# Reproducibility Materials for [REF]
+# Reproducibility Materials 
 
-This folder contains the scripts, data, and supplementary materials required to reproduce the figures and analyses from the publication **[REF]**.
+This folder contains the scripts, data, and supplementary materials required to reproduce the figures and analyses from the publication **["Efficient detection and typing of phage-plasmids"](https://www.biorxiv.org/content/10.1101/2025.08.29.673033v1)**.
 
 ### Folder Structure
 
@@ -43,7 +43,7 @@ This folder contains the scripts, data, and supplementary materials required to 
     -   **in 03/21** - indicates if the MGE was present in 03/21 dataset (Yes/No).
     -   **in 05/23** - indicates if the MGE was present in 05/23 dataset (Yes/No).
     -   **Source** - the original database source (Phage_DB or Plasmid_DB).
-    -   **Host genus** - genus of the bacterial host. Host assignment was based on GenBank metadata (`ORGANISM` field) for plasmids, and the virus–host DB ([virus-host database](https://www.genome.jp/virushostdb/) for phages.
+    -   **Host genus** - genus of the bacterial host. Host assignment was based on GenBank metadata (`ORGANISM` field) for plasmids, and the virus–host DB [virus-host database](https://www.genome.jp/virushostdb/) for phages.
     -   **Name** - full name of the MGE.
     -   **Replicon size (bp)** - total size in base pairs.
     -   **MGE type MM-GRC** - MGE classification (e.g., Phage, Plasmid, or P–P with assigned type) predicted by the MM-GRC pipeline. For elements present in both datasets, the newer (05/23) classification is used.
@@ -80,7 +80,7 @@ This folder contains the scripts, data, and supplementary materials required to 
     -   **`All_hmm_hits_table_0523_by_tyPPing.tsv`**
     -   **`Final_prediction_table_0523_by_tyPPing.tsv`**
 
-### Other supplementary data are stored in Zenodo repository [LINK] due to storage limits:
+### Other supplementary data are stored in [Zenodo repository](https://doi.org/10.5281/zenodo.16616313) due to storage limits:
 
 -   **`g2g_plot_tables/`** folder contains standard input tables used by the `all_g_to_g_plots_filtered.R` script to generate genome-to-genome visualizations with **gggenomes** ([gggenomes GitHub](https://github.com/thackl/gggenomes)):
 
