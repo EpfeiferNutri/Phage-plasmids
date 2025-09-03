@@ -61,7 +61,7 @@ tyPPing/
 
 -   A multi-fasta protein file, used for the hmmsearch (e.g., `proteins.faa`).
 
--   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available [ADD LINK TO ZENODO]).
+-   P-P HMMs `tyPPing_signarture_profiles.hmm` (also available on [Zenodo repository](https://doi.org/10.5281/zenodo.16616313)).
 
 **2. For tyPPing scripts (Step 2):**
 
@@ -263,4 +263,4 @@ Notably, the **Input tables** are different in comparison to tyPPing used for co
 
 # Citing tyPPing
 
--   If you use tyPPing, please cite the corresponding paper:
+-   If you use tyPPing, please cite the corresponding paper: **["Efficient detection and typing of phage-plasmids"](https://www.biorxiv.org/content/10.1101/2025.08.29.673033v1)**
