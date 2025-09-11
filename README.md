@@ -6,7 +6,7 @@ Here you can find the documentation, scripts, and data necessary for the **ident
 
 <img width="2059" height="682" alt="image" src="https://github.com/user-attachments/assets/8bf089c7-8f3c-4b96-b533-60152637b8b3" />
 
-See DESCRIPTION.md in the separate folders for details. Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
+Data and scripts required to reproduce analysis and figures of our study are in 'Publication_related_data'.
 
 ### *tyPPing*
 
