@@ -1,0 +1,8 @@
+Genome ID	P-P type	Confidence level	Predicted by	Genome size MinProteins (bp)	MinProteins cutoff	MinProteins hits	MinProteins hits list	MinProteins contigs list	Composition	Genome size Composition (bp)	Composition size	Composition hits	Composition contigs list
+GCF_000599665	P1_1	NA	MinProteins + Composition	NA	49	58	58	NZ_CP007392	P1_1_Composition_7	NA	71	67	NZ_CP007392
+GCF_000599685	P1_1	NA	MinProteins + Composition	NA	49	49	49	NZ_CP007393	P1_1_Composition_121	NA	69	58	NZ_CP007393
+GCF_001677475	P1_1	NA	MinProteins + Composition	NA	49	62	62	NZ_CP015229	P1_1_Composition_7	NA	71	68	NZ_CP015229
+GCF_019428705	P1_1	NA	MinProteins + Composition	NA	49	65	65	NZ_CP080139	P1_1_Composition_7	NA	71	68	NZ_CP080139
+GCF_022569795	P1_1	NA	MinProteins + Composition	NA	49	69	69	NZ_CP093011	P1_1_Composition_7	NA	71	71	NZ_CP093011
+GCF_003177255	P1_2	NA	Composition	NA	46	18	18	NZ_CP029568	P1_2_Composition_2	NA	82	71	NZ_CP029568
+GCF_020911785	pKpn	NA	MinProteins	NA	38	79	79	NZ_CP087122	NA	NA	NA	NA	NA
