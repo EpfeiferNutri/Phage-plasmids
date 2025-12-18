@@ -335,7 +335,8 @@ suppressMessages({
         PP_category == "P11" ~ "P1_1",
         PP_category == "P12" ~ "P1_2",
         PP_category == "SSU5" ~ "SSU5_pHCM2",
-        TRUE              ~ PP_category))
+        TRUE              ~ PP_category)) %>%
+      mutate(`cutoff_MinProteins` = ifelse(PP_category == "N15" & is.na(Composition), 24, cutoff_MinProteins))
     
     FINAL_SUMMARY_TABLE = FINAL_SUMMARY_TABLE_ %>%
       rename(`Genome ID` = genome_id, `P-P type` = PP_category, `Genome size MinProteins (bp)` = size_MinProteins, `Number of proteins MinProteins` = n_protein_MinProteins,  `Tolerance to gaps` = tol_thr,
