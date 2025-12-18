@@ -80,7 +80,7 @@ This folder contains the scripts, data, and supplementary materials required to 
     -   **`All_hmm_hits_table_0523_by_tyPPing.tsv`**
     -   **`Final_prediction_table_0523_by_tyPPing.tsv`**
   
-7. **`draft_genomes_analysis/`** folder contains tyPPing's prediction tables for short-read, long-read assemblies and complete P–P genomes of 12 selected draft genomes from carbapenem-resistant *Enterobacteriales* (CRE) species if cumulative (-main-) and non-cumulative (-draft-) modes are used.
+7. **`draft_genomes_analysis/`** folder contains tyPPing's prediction tables for short-read, long-read assemblies and complete P–P genomes of 12 selected draft genomes from carbapenem-resistant *Enterobacteriales* (CRE) species for cumulative (-main-) and non-cumulative (-draft-) modes.
 8. **`tyPPing_test_bacterial_genomes/`** folder contains tyPPing's (version for draft genomes without genome size cutoffs) output tables `Final_prediction_table.tsv`, `All_hmm_hits_table.tsv` for combined bacterial genome (chromosomes and plasmids from the same organism treated as a single genome, N = 32 798). The genomes are listed in `combined_genomes_info.tsv`.
 
 ### Other supplementary data are stored in [Zenodo repository](https://doi.org/10.5281/zenodo.16616313) due to storage limits:
