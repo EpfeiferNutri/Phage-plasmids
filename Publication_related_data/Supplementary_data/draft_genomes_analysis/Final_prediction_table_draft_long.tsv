@@ -1,0 +1,7 @@
+Genome ID	P-P type	Confidence level	Predicted by	Genome size MinGenes (bp)	MinGenes cutoff	MinGenes hits	MinGenes hits list	MinGenes contigs list	Composition	Genome size Composition (bp)	Composition size	Composition hits	Composition contigs list
+169C2	N15	High	MinGenes + Composition	54351	7	10	9;1	169C2_contig_3;169C2_contig_11	N15_Composition_3	71473	23	23	169C2_contig_3;169C2_contig_4;169C2_contig_11
+170E2	N15	High	MinGenes + Composition	62403	7	10	10	170E2_contig_54	N15_Composition_3	65060	23	21	170E2_contig_54;170E2_contig_53
+171A5	N15	High	MinGenes + Composition	44774	7	10	9;1	171A5_contig_22;171A5_contig_18	N15_Composition_3	49724	23	22	171A5_contig_22;171A5_contig_18;171A5_contig_23
+204G7	N15	High	MinGenes + Composition	59047	7	10	9;1	204G7_contig_10;204G7_contig_6	N15_Composition_3	73466	23	23	204G7_contig_10;204G7_contig_5;204G7_contig_6
+170D8	P1_2	Medium	MinGenes + Composition	73118	46	60	60	170D8_contig_18	P1_2_Composition_2	73118	82	69	170D8_contig_18
+166F4	pSLy3	High	MinGenes + Composition	110847	47	90	90	166F4_contig_2	pSLy3_Composition_9	110847	95	94	166F4_contig_2

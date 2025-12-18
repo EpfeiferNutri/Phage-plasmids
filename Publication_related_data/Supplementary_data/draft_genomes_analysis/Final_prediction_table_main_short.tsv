@@ -1,0 +1,10 @@
+Genome ID	Genome size (bp)	P-P type	Confidence level	Predicted by	MinProteins cutoff	MinProteins hits	Composition	Composition size	Composition hits
+169C2_contig_0025	38372	N15	Medium	MinProteins + Composition	7	10	N15_Composition_3	23	21
+170E2_contig_0036	38375	N15	Medium	MinProteins + Composition	7	10	N15_Composition_3	23	21
+171A5_contig_0030	38368	N15	Medium	MinProteins + Composition	7	10	N15_Composition_3	23	21
+204G7_contig_0038	40842	N15	High	MinProteins + Composition	7	10	N15_Composition_3	23	21
+174J8_contig_00020	94468	P1_1	High	MinProteins + Composition	49	64	P1_1_Composition_7	71	68
+166F4_contig_00029	60121	pSLy3	Low	MinProteins	47	54	NA	NA	NA
+169C2_contig_0015	114045	SSU5_pHCM2	High	MinProteins + Composition	71	85	SSU5_pHCM2_Composition_1	90	87
+170E2_contig_0013	115079	SSU5_pHCM2	High	MinProteins + Composition	71	85	SSU5_pHCM2_Composition_1	90	87
+171A5_contig_0020	120429	SSU5_pHCM2	High	MinProteins + Composition	71	85	SSU5_pHCM2_Composition_1	90	87

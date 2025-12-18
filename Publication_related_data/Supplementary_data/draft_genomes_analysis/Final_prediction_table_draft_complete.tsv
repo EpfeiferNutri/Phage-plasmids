@@ -1,0 +1,12 @@
+Genome ID	P-P type	Confidence level	Predicted by	Genome size MinProteins (bp)	MinProteins cutoff	MinProteins hits	MinProteins hits list	MinProteins contigs list	Composition	Genome size Composition (bp)	Composition size	Composition hits	Composition contigs list
+169C2	N15	High	MinProteins + Composition	47549	7	10	10	169C2_contig_2	N15_Composition_3	47549	23	22	169C2_contig_2
+170E2	N15	High	MinProteins + Composition	47549	7	10	10	170E2_contig_2	N15_Composition_3	47549	23	22	170E2_contig_2
+171A5	N15	High	MinProteins + Composition	47549	7	10	10	171A5_contig_2	N15_Composition_3	47549	23	22	171A5_contig_2
+204G7	N15	High	MinProteins + Composition	47450	7	11	11	204G7_contig_1	N15_Composition_3	47450	23	23	204G7_contig_1
+163A9	P1_1	High	MinProteins + Composition	99775	49	58	58	163A9_contig_2	P1_1_Composition_7	99775	71	66	163A9_contig_2
+174J8	P1_1	High	MinProteins + Composition	97472	49	67	67	174J8_contig_1	P1_1_Composition_7	97472	71	69	174J8_contig_1
+170D8	P1_2	High	MinProteins + Composition	90188	46	68	68	170D8_contig_1	P1_2_Composition_2	90188	82	78	170D8_contig_1
+169C2	SSU5_pHCM2	Medium	MinProteins	111978	71	71	71	169C2_contig_1	NA	NA	NA	NA	NA
+170E2	SSU5_pHCM2	High	MinProteins + Composition	115002	71	86	86	170E2_contig_1	SSU5_pHCM2_Composition_1	115002	90	88	170E2_contig_1
+171A5	SSU5_pHCM2	High	MinProteins + Composition	120384	71	85	85	171A5_contig_1	SSU5_pHCM2_Composition_1	120384	90	87	171A5_contig_1
+211G7	pKpn	Medium	MinProteins	104171	38	39	39	211G7_contig_1	NA	NA	NA	NA	NA

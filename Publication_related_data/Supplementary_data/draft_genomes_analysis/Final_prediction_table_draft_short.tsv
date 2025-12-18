@@ -1,0 +1,12 @@
+Genome ID	P-P type	Confidence level	Predicted by	Genome size MinGenes (bp)	MinGenes cutoff	MinGenes hits	MinGenes hits list	MinGenes contigs list	Composition	Genome size Composition (bp)	Composition size	Composition hits	Composition contigs list
+169C2	N15	High	MinGenes + Composition	42516	7	10	9;1	169C2_contig_0025;169C2_contig_0035	N15_Composition_3	42516	23	22	169C2_contig_0025;169C2_contig_0035
+170E2	N15	High	MinGenes + Composition	45372	7	10	9;1	170E2_contig_0036;170E2_contig_0047	N15_Composition_3	45372	23	21	170E2_contig_0036;170E2_contig_0047
+171A5	N15	High	MinGenes + Composition	44647	7	10	9;1	171A5_contig_0030;171A5_contig_0037	N15_Composition_3	44647	23	21	171A5_contig_0030;171A5_contig_0037
+163A9	P1_1	High	MinGenes + Composition	93694	49	64	40;8;7;6;3	163A9_contig_00023;163A9_contig_00114;163A9_contig_00124;163A9_contig_00105;163A9_contig_00164	P1_1_Composition_7	93694	71	69	163A9_contig_00023;163A9_contig_00105;163A9_contig_00114;163A9_contig_00124;163A9_contig_00164
+174J8	P1_1	High	MinGenes + Composition	94468	49	65	65	174J8_contig_00020	P1_1_Composition_7	94468	71	69	174J8_contig_00020
+166F4	pSLy3	High	MinGenes + Composition	109551	47	94	54;40	166F4_contig_00029;166F4_contig_00035	pSLy3_Composition_9	109551	95	95	166F4_contig_00029;166F4_contig_00035
+169C2	SSU5_pHCM2	High	MinGenes + Composition	114045	71	85	85	169C2_contig_0015	SSU5_pHCM2_Composition_1	114045	90	87	169C2_contig_0015
+170E2	SSU5_pHCM2	High	MinGenes + Composition	115079	71	85	85	170E2_contig_0013	SSU5_pHCM2_Composition_1	115079	90	87	170E2_contig_0013
+171A5	SSU5_pHCM2	High	MinGenes + Composition	120429	71	85	85	171A5_contig_0020	SSU5_pHCM2_Composition_1	120429	90	87	171A5_contig_0020
+204G7	N15	High	MinGenes + Composition	46725	7	10	9;1	204G7_contig_0038;204G7_contig_0054	N15_Composition_3	46725	23	22	204G7_contig_0038;204G7_contig_0054
+211G7	SSU5_pHCM2	Medium	MinGenes	109572	71	78	39;35;4	211G7_contig_00029;211G7_contig_00040;211G7_contig_00102	NA	NA	NA	NA	NA
