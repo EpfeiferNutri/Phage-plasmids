@@ -78,7 +78,7 @@ geNomad_vConTACTv2/
 │   ├── reference_0321_PP_list_for_vConTACT2.xlsx       # Reference P-P dataset with assigned P-P types
 │   ├── genome_by_genome_overview.csv                   # Pairwise genome clustering overview (raw vConTACT output)
 │   ├── c1.ntw                                          # Gene-sharing network file (raw vConTACT output)
-│   ├── genome_by_genome_overview_ALL_0523_plasmids.csv # raw vConTACT output on plasmids without geNomad prefilter
+│   ├── genome_by_genome_overview_ALL_0523_plasmids.csv # Raw vConTACT output on plasmids without geNomad prefilter
 ├── vConTACT2_PP_list_in_0523_plasmids.xlsx             # Final output: predicted P-Ps with assigned types
 ```
 
